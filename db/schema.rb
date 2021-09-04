@@ -10,6 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+
 ActiveRecord::Schema.define(version: 2021_09_04_044629) do
 
   create_table "favorites", charset: "utf8mb3", force: :cascade do |t|
