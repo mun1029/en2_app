@@ -1,0 +1,75 @@
+.back-page{
+  padding: 50px;
+  height: 100vh;
+  width: calc( 100% - 100px );
+}
+
+.account-page{
+  border-radius: 10px;
+  background-color: bisque;
+  padding: 50px;
+  width: calc( 100% - 100px );
+}
+
+.account-page h2 {
+  margin-bottom: 10px;
+  letter-spacing: 3px;
+  font-size: 35px;
+  font-weight: 200;
+}
+
+.account-page .field {
+  margin-bottom: 10px;
+}
+.account-page .field .field-label {
+  padding: 10px 0;
+  letter-spacing: 1px;
+  font-size: 16px;
+  font-weight: 200;
+}
+
+.account-page .field .field-label i {
+  font-size: 15px;
+}
+.account-page .field .field-input input {
+  width: 100%;
+  padding: 10px;
+  letter-spacing: 1px;
+}
+.account-page .btn {
+  display: inline-block;
+  height: 50px;
+  padding: 0 30px;
+  line-height: 50px;
+  letter-spacing: 1px;
+  text-align: center;
+  border-radius: 5px;
+  border: 1px solid black;
+}
+.account-page input[type=submit] {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  color: snow;
+  background-color: #f3b456;
+}
+.account-page .field-remember-me {
+  display: flex;
+}
+.account-page .field-label .field_with_errors {
+  display: inline-block;
+  color: #d65f4c;
+  font-weight: 400;
+}
+.account-page .field-input .field_with_errors {
+  position: relative;
+}
+.account-page .field-input .field_with_errors:after {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 5px;
+  background-color: #d65f4c;
+}
