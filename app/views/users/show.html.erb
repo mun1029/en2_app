@@ -1,41 +1,28 @@
 <div class="my-page">
-  <div class="my-profile">
-    <h1> <%= current_user.nickname %>さんのページ </h1>
-  </div>
-  <div class="my-indexes">
-    <h2> お気に入り投稿 </h2>
-    <div class="my-index">
-      <div class="my-post-header">
-        <div class="my-post-date"> 投稿日時：2021/09/04 19:20 </div>
-        <div class="my-post-edit"> <a href="#"> 編集 </a></div>
-        <div class="my-post-delete"> <a href="#"> 削除 </a></div>
+  <div class="side-bar">
+    <div class="my-profile">
+      <div class="user-name">
+        <h1> <%= current_user.nickname %> </h1>
       </div>
-      <div class="my-post-body">
-        <div class="my-post-title"> タイトル：<a href="#"> 2回目投稿 </a></div>
-        <div class="my-post-cate"> ( <a href="#"> フレームワーク </a></div>
-        <div class="my-post-cate"> <a href="#"> ruby on rails </a></div>
-        <div class="my-post-cate"> <a href="#"> MVC </a> )</div>
+      <h2>Links</h2>
+      <div class="my-links">
+        <div class="my-link"><a href="#">投稿</a></div>
+        <div class="my-link"><a href="#">お気に入り</a></div>
       </div>
     </div>
-    <div class="my-index">
-      <div class="my-post-header">
-        <div class="my-post-date"> 投稿日時：2021/09/04 18:50</div>
-        <div class="my-post-edit"> <a href="#"> 編集 </a></div>
-        <div class="my-post-delete"> <a href="#"> 削除 </a></div>
+    <div class="cate-search">
+      <h2>カテゴリー検索</h2>
+      <div class="my-cates">
+        <div class="my-cate"><a href="#">pyton</a></div>
+        <div class="my-cate"><a href="#">ruby</a></div>
+        <div class="my-cate"><a href="#">HTML・CSS</a></div>
+        <div class="my-cate"><a href="#">ruby on rails</a></div>
+        <div class="my-cate"><a href="#">javaScript</a></div>
+        <div class="my-cate"><a href="#">jquery</a></div>
       </div>
-      <div class="my-post-body">
-        <div class="my-post-title"> タイトル：<a href="#"> 初投稿 </a></div>
-        <div class="my-post-cate"> ( <a href="#">  言語 </a></div>
-        <div class="my-post-cate"> <a href="#"> ruby </a></div>
-        <div class="my-post-cate"> <a href="#"> 環境構築 </a> )</div>
-      </div>
-    </div>
-    <div class="my-index-fooder">
-      <div class="my-index-abbreviation"><a href="#">▼もっと表示する</a></div>
     </div>
   </div>
-
-  <div class="my-indexes">
+  <div class="main">
     <h2><%= current_user.nickname %>さんの投稿一覧</h2>
     <div class="my-index">
       <div class="my-post-header">
@@ -45,9 +32,13 @@
       </div>
       <div class="my-post-body">
         <div class="my-post-title"> タイトル：<a href="#"> 3回目投稿 </a></div>
-        <div class="my-post-cate"> ( <a href="#"> テキストエディタ </a></div>
+        <div class="my-post-favorite"> ☆300 </div>
+      </div>
+      <div class="my-post-category">
+        <div class="cate-head">  カテゴリー：</div>
+        <div class="my-post-cate">  <a href="#"> テキストエディタ </a></div>
         <div class="my-post-cate"> <a href="#"> VScode </a></div>
-        <div class="my-post-cate"> <a href="#"> 拡張機能 </a> )</div>
+        <div class="my-post-cate"> <a href="#"> 拡張機能 </a> </div>
       </div>
     </div>
     <div class="my-index">
@@ -58,9 +49,13 @@
       </div>
       <div class="my-post-body">
         <div class="my-post-title"> タイトル：<a href="#"> 2回目投稿 </a></div>
-        <div class="my-post-cate"> ( <a href="#"> フレームワーク </a></div>
+        <div class="my-post-favorite"> ☆1000 </div>
+      </div>
+      <div class="my-post-category">
+        <div class="cate-head">  カテゴリー：</div>
+        <div class="my-post-cate">  <a href="#"> フレームワーク </a></div>
         <div class="my-post-cate"> <a href="#"> ruby on rails </a></div>
-        <div class="my-post-cate"> <a href="#"> MVC </a> )</div>
+        <div class="my-post-cate"> <a href="#"> MVC </a> </div>
       </div>
     </div>
     <div class="my-index">
@@ -71,13 +66,14 @@
       </div>
       <div class="my-post-body">
         <div class="my-post-title"> タイトル：<a href="#"> 初投稿 </a></div>
-        <div class="my-post-cate"> ( <a href="#">  言語 </a></div>
-        <div class="my-post-cate"> <a href="#"> ruby </a></div>
-        <div class="my-post-cate"> <a href="#"> 環境構築 </a> )</div>
+        <div class="my-post-favorite"> ☆533 </div>
       </div>
-    </div>
-    <div class="my-index-fooder">
-      <div class="my-index-abbreviation"><a href="#">▼もっと表示する</a></div>
+      <div class="my-post-category">
+        <div class="cate-head">  カテゴリー：</div>
+        <div class="my-post-cate">  <a href="#"> 言語 </a></div>
+        <div class="my-post-cate"> <a href="#"> ruby </a></div>
+        <div class="my-post-cate"> <a href="#"> 環境構築 </a> </div>
+      </div>
     </div>
   </div>
 </div>

@@ -1,0 +1,142 @@
+.my-page{
+  padding: 30px;
+  height: 100vh;
+  width: calc( 100% - 100px );
+  display: flex;
+}
+
+.my-page h1{
+  margin-bottom: 10px;
+  letter-spacing: 3px;
+  font-size: 35px;
+  font-weight: 200;
+}
+
+.main h2{
+  margin-bottom: 10px;
+  letter-spacing: 3px;
+  font-size: 20px;
+  font-weight: 200;
+  border-bottom: 3px solid orange;
+}
+
+.side-bar h2{
+  margin-bottom: 10px;
+  letter-spacing: 3px;
+  font-size: 20px;
+  font-weight: 200;
+  border-bottom: 3px solid orange;
+}
+
+.side-bar{
+  width: 40%;
+  margin-top: 15px;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.my-profile{
+  text-align: center;
+  background-color: rgb(252, 233, 198);
+  border-radius: 10px;
+  padding: 10px;
+}
+
+.my-links{
+  display: flex;
+  justify-content: space-around;
+  padding: 0 50px;
+}
+
+.my-link a{
+  text-decoration: none;
+  color: black;
+}
+
+.my-cate{
+  padding: 5px 10px;
+  font-size: 11px;
+  background-color: rgb(190, 187, 187);
+  margin-top: 10px;
+  text-align: center;
+}
+
+.my-cate a{
+  text-decoration: none;
+  color: black;
+}
+
+.user-name{
+  padding: 60px 0;
+}
+
+.cate-search{
+  text-align: center;
+  background-color: rgb(252, 233, 198);
+  border-radius: 10px;
+  padding: 10px;
+  margin-top: 30px;
+}
+
+.main{
+  width: 70%;
+  background-color: rgb(252, 233, 198);
+  border-radius: 10px;
+  padding: 10px;
+  margin-top: 15px;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.my-index{
+  padding: 10px;
+  border-bottom: 1px solid orange;
+}
+
+.my-post-header{
+  display: flex;
+}
+
+.my-post-edit{
+  padding: 0 0 0 30px;
+}
+
+.my-post-delete{
+  padding: 0 10px;
+}
+
+.my-post-body{
+  display: flex;
+  margin-bottom: 5px;
+}
+
+.my-post-title{
+  padding: 0 10px;
+  font-size: 20px;
+}
+
+.my-post-favorite{
+  margin-left: 15px;
+  font-size: 20px;
+}
+
+.my-post-category{
+  display: flex;
+}
+
+.cate-head{
+  margin-left: 10px;
+}
+
+.my-post-cate{
+  padding: 5px 10px;
+  font-size: 11px;
+  background-color: rgb(190, 187, 187);
+  margin-right: 5px;
+  text-align: center;
+}
+
+.my-post-cate a{
+  text-decoration: none;
+  color: black;
+}
