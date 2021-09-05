@@ -1,0 +1,31 @@
+<div class="shader-header-registrations">
+  <div class="shader-registratio-left">
+    <p>ようこそ</p>
+    <P>会員登録をして記事を投稿してみましょう。！</p>
+  </div>
+  <div class="shader-registratio-right">
+    <%= form_with model: @user, url: user_registration_path, class:"shader-registration", local: true do |f| %>
+      <div class="shader-field">
+        <%= f.label :email %><br />
+        <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+      </div>
+
+      <div class="shader-field">
+        <%= f.label :password %>
+        <% if @minimum_password_length %>
+        <em>(<%= @minimum_password_length %> characters minimum)</em>
+        <% end %><br />
+        <%= f.password_field :password, autocomplete: "new-password" %>
+      </div>
+
+      <div class="shader-field">
+        <%= f.label :password_confirmation %><br />
+        <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+      </div>
+
+      <div class="shader-actions">
+        <%= f.submit "Sign up" %>
+      </div>
+    <% end %>
+  </div>
+</div>

@@ -1,0 +1,9 @@
+.shader-header-registrations {
+  background-color: antiquewhite;
+  display: flex;
+  justify-content: space-between;
+}
+.shader-registration {
+  margin-right: 30px;
+  padding-bottom: 20px;
+}
