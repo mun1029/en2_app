@@ -5,23 +5,34 @@
   </div>
   <div class="shader-registratio-right">
     <%= form_with model: @user, url: user_registration_path, class:"shader-registration", local: true do |f| %>
-      <div class="shader-field">
-        <%= f.label :email %><br />
-        <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-      </div>
 
-      <div class="shader-field">
-        <%= f.label :password %>
-        <% if @minimum_password_length %>
-        <em>(<%= @minimum_password_length %> characters minimum)</em>
-        <% end %><br />
-        <%= f.password_field :password, autocomplete: "new-password" %>
+    <div class="form-group">
+      <div class='form-text-wrap'>
+        <label class="form-text">ニックネーム</label>
       </div>
+      <%= f.text_field :nickname, class:"input-default", id:"nickname" %>
+    </div>
 
-      <div class="shader-field">
-        <%= f.label :password_confirmation %><br />
-        <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+    <div class="form-group">
+      <div class='form-text-wrap'>
+        <label class="form-text">メールアドレス</label>
       </div>
+      <%= f.email_field :email, class:"input-default", id:"email", autofocus: true %>
+    </div>
+
+    <div class="form-group">
+      <div class='form-text-wrap'>
+        <label class="form-text">パスワード(英数字混合6文字以上)</label>
+      </div>
+      <%= f.password_field :password, class:"input-default", id:"password" %>
+    </div>
+
+    <div class="form-group">
+      <div class='form-text-wrap'>
+        <label class="form-text">確認用パスワード</label>
+      </div>
+      <%= f.password_field :password_confirmation, class:"input-default", id:"password-confirmation" %>
+    </div>
 
       <div class="shader-actions">
         <%= f.submit "Sign up" %>

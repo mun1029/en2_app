@@ -6,8 +6,8 @@
     <%= text_field_tag "search-word", "Ruby..", {class:"search_word"} %>
   </div>
   <div class="header-right-content">
-    <%= button_to "投稿", {controller: 'posts', action: 'new'}, {method: :get} %>
     <% if user_signed_in? %>
+      <%= button_to "投稿", {controller: 'posts', action: 'new'}, {method: :get} %>
       <%= link_to current_user.nickname, "#"%>
     <% else %>
       <%= link_to 'ログイン',  new_user_session_path %>

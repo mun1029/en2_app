@@ -1,0 +1,24 @@
+<%= render "shared/header" %>
+<div class="posts-new">
+  <%= form_with mdoel: @post, local: true do |f| %>
+    <div class="post-new-title">
+      <%= f.text_field :title, class:"post-title-text", placeholder:"タイトル" %>
+    </div>
+    <div class="post-cate">
+      <%= f.collection_select(:l_cate_id, L_cate.all, :id, :name, {}, {class:"cate-select"}) %>
+      <%= f.collection_select(:m_cate_id, M_cate.where(id: 10), :id, :name, {}, {class:"cate-select"}) %>
+      <%# <%= f.collection_select(:s_cate_id, S_cate.where(101), :id, :name, {}, {class:"cate-select"}) %> %>
+    </div>
+    <div class="post-main">
+      <div class="post-text">
+        <%= f.text_area :text, class:"post-text" %>
+      </div>
+      <div class="post-text-preview">
+
+      </div>
+    </div>
+    <div class="post-action">
+      <%= f.submit "投稿する", class:"post-btn" %>
+    </div>
+  <% end %>
+</div>
