@@ -3,12 +3,17 @@
     <p>EN2(logo)</p>
   </div>
   <div class="header-center-content">
-    <%= text_field_tag "search-word", "Ruby..", {class:"search_word"} %>
+    キーワード検索：
+    <form>
+      <input type="text" placeholder="Ruby.." class="search_word">
+    </form>
+    <div class="cate-search-lists">カテゴリーから探す▼</div>
   </div>
   <div class="header-right-content">
-    <%= button_to "投稿", {controller: 'posts', action: 'new'}, {method: :get} %>
+    <%= button_to "投稿", {controller: 'posts', action: 'new'}, {method: :get, class: 'new-btn'} %>
     <% if user_signed_in? %>
-      <%= link_to current_user.nickname, "#"%>
+      <%= link_to current_user.nickname, user_path(current_user.id) %>
+      <%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "logout" %>
     <% else %>
       <%= link_to 'ログイン',  new_user_session_path %>
       <%= link_to '新規登録', new_user_registration_path %>
