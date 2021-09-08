@@ -1,6 +1,5 @@
 class Post < ApplicationRecord
   belongs_to :user
-  belongs_to_active_hash :s_cate
   has_many :favorites
   has_many :favorite_users, through: :favorites, source: :user
   
