@@ -1,18 +1,9 @@
 class Post < ApplicationRecord
   belongs_to :user
-  has_many :favorites
-  has_many :favorite_users, through: :favorites, source: :user
+  belongs_to :category
   
-  extend ActiveHash::Associations::ActiveRecordExtensions
-    belongs_to :l_cate
-    belongs_to :m_cate
-    belongs_to :s_cate
-
   with_options presence: true do
     validates :title
     validates :text
-    validates :l_cate_id
-    validates :m_cate_id
-    validates :s_cate_id
   end
 end

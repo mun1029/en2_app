@@ -39,8 +39,6 @@ GEM
       erubi (~> 1.4)
       rails-dom-testing (~> 2.0)
       rails-html-sanitizer (~> 1.1, >= 1.2.0)
-    active_hash (3.1.0)
-      activesupport (>= 5.0.0)
     activejob (6.1.4.1)
       activesupport (= 6.1.4.1)
       globalid (>= 0.3.6)
@@ -62,6 +60,8 @@ GEM
       minitest (>= 5.1)
       tzinfo (~> 2.0)
       zeitwerk (~> 2.3)
+    ancestry (4.1.0)
+      activerecord (>= 5.2.6)
     ast (2.4.2)
     bcrypt (3.1.16)
     bindex (0.8.1)
@@ -249,7 +249,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  active_hash
+  ancestry
   bootsnap (>= 1.4.4)
   byebug
   devise
