@@ -1,31 +1,15 @@
 <div class="shader-header-registrations">
-  <div class="shader-registratio-left">
-    <p>ようこそ</p>
-    <P>会員登録をして記事を投稿してみましょう！</p>
+  <div class="shader-registration-left">
+    <h1>ようこそ!EN2アプリへ！</h1>
+    <p>EN2アプリはエンジニアによるエンジニアのための検索エンジンとなる学習補助アプリです。</p>
+    <ul>
+      <li>機能1：学習した内容を投稿（アウトプット）することで知識の定着をサポートします。</li>
+      <li>機能2：カテゴリー・キーワード検索により過去に投稿した欲しい記事をピンポイントで検索できます。</li>
+      <li>機能3：開発に行き詰まった時、他ユーザーが投稿した記事を検索し参考にすることができます。</li>
+    </ul>
+    <P>さあ、会員登録して記事を投稿してみましょう！</p>
   </div>
-  <div class="shader-registratio-right">
-    <%= form_with model: @user, url: user_registration_path, class:"shader-registration", local: true do |f| %>
-      <div class="shader-field">
-        <%= f.label :email %><br />
-        <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-      </div>
-
-      <div class="shader-field">
-        <%= f.label :password %>
-        <% if @minimum_password_length %>
-        <em>(<%= @minimum_password_length %> characters minimum)</em>
-        <% end %><br />
-        <%= f.password_field :password, autocomplete: "new-password" %>
-      </div>
-
-      <div class="shader-field">
-        <%= f.label :password_confirmation %><br />
-        <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-      </div>
-
-      <div class="shader-actions">
-        <%= f.submit "Sign up" %>
-      </div>
-    <% end %>
+  <div class="shader-registration-right">
+    <%= link_to '⇨  新規会員登録ページへGO！！', new_user_registration_path %>
   </div>
 </div>
