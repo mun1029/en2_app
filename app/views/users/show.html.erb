@@ -27,21 +27,25 @@
   <div class="main">
     <h2><%= current_user.nickname %>さんの投稿一覧</h2>
     <div class="my-index">
-      <div class="my-post-header">
-        <div class="my-post-date"> 投稿日時：2021/09/05 17:20 </div>
-        <div class="my-post-edit"> <a href="#"> 編集 </a></div>
-        <div class="my-post-delete"> <a href="#"> 削除 </a></div>
-      </div>
-      <div class="my-post-body">
-        <div class="my-post-title"> タイトル：<a href="#"> 3回目投稿 </a></div>
-        <div class="my-post-favorite"> ☆300 </div>
-      </div>
-      <div class="my-post-category">
-        <div class="cate-head">  カテゴリー：</div>
-        <div class="my-post-cate">  <a href="#"> テキストエディタ </a></div>
-        <div class="my-post-cate"> <a href="#"> VScode </a></div>
-        <div class="my-post-cate"> <a href="#"> 拡張機能 </a> </div>
-      </div>
+      <% @posts.each do |post| %>
+        <div class="my-post-header">
+          <div class="my-post-date"> 投稿日時：<%= post.created_at %> </div>
+          <% if user_signed_in? && @user.id == current_user.id%>
+            <div class="my-post-edit"> <%= link_to "編集", edit_post_path(post.id) %></div>
+            <div class="my-post-delete"> <%= link_to "削除", post_path(post.id), method: :delete %></div>
+          <% end %>
+        </div>
+        <div class="my-post-body">
+          <div class="my-post-title"> タイトル：<a href="#"> <%= post.title %> </a></div>
+          <div class="my-post-favorite"> ☆<%= post.favorites.count %> </div>
+        </div>
+        <div class="my-post-category">
+          <div class="cate-head">  カテゴリー：</div>
+          <div class="my-post-cate">  <a href="#"> <%= post.l_cate.name %> </a></div>
+          <div class="my-post-cate"> <a href="#"> <%= post.m_cate.name %> </a></div>
+          <div class="my-post-cate"> <a href="#"> <%= post.s_cate.name %> </a> </div>
+        </div>
+      <% end %>
     </div>
     <div class="my-index">
       <div class="my-post-header">
