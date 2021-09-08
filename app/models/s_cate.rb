@@ -1,4 +1,4 @@
-class SCate < ActiveHash::Base
+class S_cate < ActiveHash::Base
   self.data = [
     #言語 ruby 101
     { id: 10101, name: '環境構築' },
