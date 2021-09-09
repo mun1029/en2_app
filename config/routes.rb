@@ -6,6 +6,10 @@ Rails.application.routes.draw do
     member do
       get 'select_category_index'
     end
+    collection do
+      get 'get_category_children', defaults: { format: 'json' }
+      get 'get_category_grandchildren', defaults: { format: 'json' }
+    end
   end
   resources :categories, only: :new
 end
