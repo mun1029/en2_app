@@ -30,9 +30,7 @@ ActiveRecord::Schema.define(version: 2021_09_08_081242) do
 
   create_table "posts", charset: "utf8mb3", force: :cascade do |t|
     t.string "title", null: false
-    t.integer "l_cate_id", null: false
-    t.integer "m_cate_id", null: false
-    t.integer "s_cate_id", null: false
+    t.bigint "category_id"
     t.text "text", null: false
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false

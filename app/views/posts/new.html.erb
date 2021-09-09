@@ -1,11 +1,13 @@
 <%= render 'shared/header' %>
 <div class="posts-new">
-  <%= form_with mdoel: @post, local: true do |f| %>
+  <%= form_with mdoel: @post, url:posts_path, local: true do |f| %>
     <div class="post-new-title">
       <%= f.text_field :title, class:"post-title-text", placeholder:"タイトル" %>
     </div>
     <div class="post-cate">
-      <%= render 'cate', f: f %>
+      <%= f.select :category, @category_parent_array, {}, {class: 'listing-select-wrapper__box--select', id: 'parent_category'}%>
+      <div class='listing-product-detail__category'>
+      </div>
     </div>
     <div class="post-main">
       <div class="post-text">
