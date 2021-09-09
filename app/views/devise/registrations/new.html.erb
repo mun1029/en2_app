@@ -2,7 +2,7 @@
   <div class="account-page">
     <h2>新規登録</h2>
 
-    <%= form_with(model: resource, scope: resource_name, url: session_path(resource_name)) do |f| %>
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
       <%= render "devise/shared/error_messages", resource: resource %>
 
       <div class="field">
