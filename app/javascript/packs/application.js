@@ -14,3 +14,4 @@ ActiveStorage.start()
 
 require("jquery")
 require("post.js")
+require("preview.js")

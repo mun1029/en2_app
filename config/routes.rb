@@ -3,6 +3,9 @@ Rails.application.routes.draw do
   resources :users, only: :show
   root to:'posts#index'
   resources :posts do
+    namespace :api, format: 'json' do
+      get 'posts/preview'
+    end
     collection do
       get 'get_category_children', defaults: { format: 'json' }
       get 'get_category_grandchildren', defaults: { format: 'json' }

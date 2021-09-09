@@ -82,8 +82,6 @@ $(function(){
       .done(function(grandchildren){
         if(grandchildren.length != 0) {
           $('#grandchildren_wrapper').remove();
-          $('#size_wrapper').remove();
-          $('#brand_wrapper').remove();
           var insertHTML = '';
           grandchildren.forEach(function(grandchild){
             insertHTML += appendOption(grandchild);
@@ -96,8 +94,6 @@ $(function(){
       })
     }else{
       $('#grandchildren_wrapper').remove();
-      $('#size_wrapper').remove();
-      $('#brand_wrapper').remove();
     }
   });
 });
