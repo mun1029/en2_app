@@ -2,13 +2,6 @@
   <div class="header-left-content">
     <p>EN2(logo)</p>
   </div>
-  <div class="header-center-content">
-    キーワード検索：
-    <form>
-      <input type="text" placeholder="Ruby.." class="search_word">
-    </form>
-    <div class="cate-search-lists">カテゴリーから探す▼</div>
-  </div>
   <div class="header-right-content">
     <%= button_to "投稿", {controller: 'posts', action: 'new'}, {method: :get, class: 'new-btn'} %>
     <% if user_signed_in? %>
@@ -18,5 +11,29 @@
       <%= link_to 'ログイン',  new_user_session_path %>
       <%= link_to '新規登録', new_user_registration_path %>
     <% end %>
+  </div>
+</div>
+<div class="header-bottom">
+  <div class="header-bottom-left-content">
+    キーワード検索：
+    <form>
+      <input type="text" placeholder="Ruby.." class="search_word">
+    </form>
+  </div>
+  <div class="header-bottom-right-content">
+    <div class="cate-search-lists">
+      <div class="cate-title">カテゴリーから探す▼</div>
+      <div class="category_list">
+        <ul class="parents_list">
+          <% @parents.each do |parent| %>
+            <li><%= link_to "#{parent.name}",select_category_index_post_path(parent.id), class: "parent_category",id: "#{parent.id}" %> </li>
+          <% end %>
+        </ul>
+        <ul class="children_list">
+        </ul>
+        <ul class="grand_children_list">
+        </ul>
+      </div>
+    </div>
   </div>
 </div>

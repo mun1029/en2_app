@@ -183,7 +183,7 @@ edita_3.children.create([
 deploy = Category.create(name: "デプロイ")
 
 #第二階層
-deploy_1 = deploy.children.create(name: "VScode")
+deploy_1 = deploy.children.create(name: "Heroku")
 
 #第三階層
 deploy_1.children.create([
@@ -236,7 +236,7 @@ db_1.children.create([
 it_word = Category.create(name: "IT用語")
 
 #第二階層
-it_word_1 = it_word.children.create(name: "MySQL")
+it_word_1 = it_word.children.create(name: "その他")
 
 #第三階層
 it_word_1.children.create([
