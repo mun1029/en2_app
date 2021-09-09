@@ -13,4 +13,5 @@ Turbolinks.start()
 ActiveStorage.start()
 
 require("jquery")
-require("post.js")
+require("../post")
+require("../search")
