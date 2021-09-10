@@ -1,0 +1,25 @@
+<% if posts.present? %>
+  <% posts.each do |post| %>
+    <div class="my-index">
+      <div class="my-post-header">
+        <div class="my-post-date"> 投稿日時　<%= post.created_at.strftime("%Y/%m/%d %H:%M") %> </div>
+        <% if user_signed_in? && @user.id == current_user.id%>
+          <div class="my-post-edit"> <%= link_to "編集", edit_post_path(post.id) %></div>
+          <div class="my-post-delete"> <%= link_to "削除", post_path(post.id), method: :delete %></div>
+        <% end %>
+      </div>
+      <div class="my-post-body">
+        <div class="my-post-title"> タイトル： <%= link_to "#{post.title}", post_path(post.id), method: :get %> </div>
+        <%# <div class="my-post-favorite"> ☆<%= post.favorites.count </div> %>
+      </div>
+      <div class="my-post-category">
+        <div class="cate-head">  カテゴリー：</div>
+        <%= link_to "#{post.category.parent.parent.name}",select_category_index_post_path(post.category.parent.parent.id), class: "my-post-cate" %>
+        <%= link_to "#{post.category.parent.name}",select_category_index_post_path(post.category.parent.id), class: "my-post-cate" %>
+        <%= link_to "#{post.category.name}",select_category_index_post_path(post.category.id), class: "my-post-cate" %>
+      </div>
+    </div>
+  <% end %>
+<% else %>
+  <p>現在、投稿されている記事はありません。</p>
+<% end %>
