@@ -19,7 +19,7 @@ class PostsController < ApplicationController
   end
 
   def get_category_grandchildren
-    @category_grandchildren = Category.find_by(name: "#{params[:child_name]}").children
+    @category_grandchildren = Category.find_by(id: "#{params[:children_id]}").children
   end
 
   def create
@@ -78,8 +78,7 @@ class PostsController < ApplicationController
   end
 
   def post_params
-    category = Category.find_by(name: params[:category_id])
-    params.permit(:title, :text).merge(user_id: current_user.id, category_id: category.id )
+    params.permit(:title, :text).merge(user_id: current_user.id, category_id: params[:grandchildren_id] )
   end
 end
 
