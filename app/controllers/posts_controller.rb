@@ -68,8 +68,9 @@ class PostsController < ApplicationController
       if post_array.present?
         post_array.each do |post|
           if post.present?
-          else
             @posts.push(post)
+          else
+            
           end
         end
       end
