@@ -49,12 +49,12 @@ class PostsController < ApplicationController
       @message = "『 #{@category.name} 』の検索結果"
     elsif @category.ancestry.include?("/")
       @posts = Post.where(category_id: params[:id])
-      @message = "『 #{@category.parent.parent.name} 』 > 『 #{@category.parent.name} 』 > 『 #{@category.name} 』の検索結果"
+      @message = "『 #{@category.root.name} 』 > 『 #{@category.parent.name} 』 > 『 #{@category.name} 』の検索結果"
     else
       category = Category.find_by(id: params[:id]).child_ids
       @posts = []
       find_post(category)
-      @message = "『 #{@category.parent.name} 』 > 『 #{@category.name} 』の検索結果"
+      @message = "『 #{@category.root.name} 』 > 『 #{@category.name} 』の検索結果"
     end
     @user = User.find(current_user.id)
     render :index
