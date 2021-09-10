@@ -6,21 +6,12 @@
   <%= @message %>
 </div>
 <div class="posts-index">
-  <div class="post">
-    <p>ユーザーネーム 2021年09月10日</p>
-    <p>タイトル              お気に入り(btn)</p>
-    <p>Ruby,Ruby on Rails,</p>
-
-    <p>ユーザーネーム 2021年09月10日</p>
-    <p>タイトル              お気に入り(btn)</p>
-    <p>Ruby,Ruby on Rails,</p>
-
-    <p>ユーザーネーム 2021年09月10日</p>
-    <p>タイトル              お気に入り(btn)</p>
-    <p>Ruby,Ruby on Rails,</p>
+  <div class="main">
+    <h2>投稿一覧</h2>
+    <%= render partial: "shared/post_index", locals: { posts: @posts } %>
   </div>
   <div class="post-pick">
-    <p>最もお気に入りされている記事</p>
+    <h2>最もお気に入りされている記事</h2>
     <p>記事名（タイトル）お気に入りされている数</p>
   </div>
 </div>

@@ -3,6 +3,7 @@ class PostsController < ApplicationController
 
   def index
     @posts = Post.all.order("created_at DESC")
+    @user = User.find(current_user.id)
   end
 
   def new
@@ -55,6 +56,7 @@ class PostsController < ApplicationController
       find_post(category)
       @message = "『 #{@category.parent.name} 』 > 『 #{@category.name} 』の検索結果"
     end
+    @user = User.find(current_user.id)
     render :index
   end
 
