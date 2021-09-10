@@ -13,5 +13,6 @@ Rails.start()
 ActiveStorage.start()
 
 require("jquery")
-require("post.js")
+require("../post")
 require("preview.js")
+require("../search")

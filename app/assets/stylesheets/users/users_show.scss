@@ -12,7 +12,7 @@
   font-weight: 200;
 }
 
-.main h2{
+.main h2,.post-pick h2{
   margin-bottom: 10px;
   letter-spacing: 3px;
   font-size: 20px;
@@ -56,7 +56,7 @@
 .my-cate{
   padding: 5px 10px;
   font-size: 11px;
-  background-color: rgb(190, 187, 187);
+  background-color: #f6f6f4;
   margin-top: 10px;
   text-align: center;
 }
@@ -79,7 +79,8 @@
 }
 
 .main{
-  width: 70%;
+  width: 60%;
+  height: 100vh;
   background-color: rgb(252, 233, 198);
   border-radius: 10px;
   padding: 10px;
@@ -131,12 +132,12 @@
 .my-post-cate{
   padding: 5px 10px;
   font-size: 11px;
-  background-color: rgb(190, 187, 187);
+  background-color: #f6f6f4;
   margin-right: 5px;
   text-align: center;
 }
 
-.my-post-cate a{
+a{
   text-decoration: none;
   color: black;
 }

@@ -1,7 +1,9 @@
 class PostsController < ApplicationController
+  before_action :set_category_list, only: [:index, :new, :select_category_index]
 
   def index
     @posts = Post.all.order("created_at DESC")
+    @user = User.find(current_user.id)
   end
 
   def new
@@ -37,12 +39,47 @@ class PostsController < ApplicationController
     @post.destroy
     redirect_to user_path(current_user.id)
   end
+  
+  def select_category_index
+    @category = Category.find_by(id: params[:id])
+    if @category.ancestry == nil
+      category = Category.find_by(id: params[:id]).indirect_ids
+      @posts = []
+      find_post(category)
+      @message = "『 #{@category.name} 』の検索結果"
+    elsif @category.ancestry.include?("/")
+      @posts = Post.where(category_id: params[:id])
+      @message = "『 #{@category.parent.parent.name} 』 > 『 #{@category.parent.name} 』 > 『 #{@category.name} 』の検索結果"
+    else
+      category = Category.find_by(id: params[:id]).child_ids
+      @posts = []
+      find_post(category)
+      @message = "『 #{@category.parent.name} 』 > 『 #{@category.name} 』の検索結果"
+    end
+    @user = User.find(current_user.id)
+    render :index
+  end
 
   private
+
+  def find_post(category)
+    category.each do |id|
+      post_array = Post.includes(:user).where(category_id: id)
+      if post_array.present?
+        post_array.each do |post|
+          if post.present?
+            @posts.push(post)
+          else
+            
+          end
+        end
+      end
+    end
+  end
 
   def post_params
     category = Category.find_by(name: params[:category_id])
     params.permit(:title, :text).merge(user_id: current_user.id, category_id: category.id )
   end
-
 end
+
