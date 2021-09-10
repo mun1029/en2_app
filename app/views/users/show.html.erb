@@ -26,8 +26,8 @@
   </div>
   <div class="main">
     <h2><%= current_user.nickname %>さんの投稿一覧</h2>
-    <div class="my-index">
-      <% @posts.each do |post| %>
+    <% @posts.each do |post| %>
+      <div class="my-index">
         <div class="my-post-header">
           <div class="my-post-date"> 投稿日時：<%= post.created_at %> </div>
           <% if user_signed_in? && @user.id == current_user.id%>
@@ -37,16 +37,16 @@
         </div>
         <div class="my-post-body">
           <div class="my-post-title"> タイトル：<a href="#"> <%= post.title %> </a></div>
-          <div class="my-post-favorite"> ☆<%= post.favorites.count %> </div>
+          <%# <div class="my-post-favorite"> ☆<%= post.favorites.count </div> %>
         </div>
         <div class="my-post-category">
           <div class="cate-head">  カテゴリー：</div>
-          <div class="my-post-cate">  <a href="#"> <%= post.l_cate.name %> </a></div>
-          <div class="my-post-cate"> <a href="#"> <%= post.m_cate.name %> </a></div>
-          <div class="my-post-cate"> <a href="#"> <%= post.s_cate.name %> </a> </div>
+          <%= link_to "#{post.category.parent.parent.name}",select_category_index_post_path(post.category.parent.parent.id), class: "my-post-cate" %>
+          <%= link_to "#{post.category.parent.name}",select_category_index_post_path(post.category.parent.id), class: "my-post-cate" %>
+          <%= link_to "#{post.category.name}",select_category_index_post_path(post.category.id), class: "my-post-cate" %>
         </div>
-      <% end %>
-    </div>
+      </div>
+    <% end %>
     <div class="my-index">
       <div class="my-post-header">
         <div class="my-post-date"> 投稿日時：2021/09/04 19:20 </div>

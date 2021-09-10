@@ -1,9 +1,8 @@
 class PostsController < ApplicationController
-  before_action :set_category_list, only: [:index]
+  before_action :set_category_list, only: [:index, :new, :select_category_index]
 
   def index
     @posts = Post.all.order("created_at DESC")
-    
   end
 
   def new
@@ -41,31 +40,22 @@ class PostsController < ApplicationController
   end
   
   def select_category_index
-    # カテゴリ名を取得するために@categoryにレコードをとってくる
     @category = Category.find_by(id: params[:id])
-
-    # 親カテゴリーを選択していた場合の処理
     if @category.ancestry == nil
-      # Categoryモデル内の親カテゴリーに紐づく孫カテゴリーのidを取得
       category = Category.find_by(id: params[:id]).indirect_ids
-      # 孫カテゴリーに該当するpostsテーブルのレコードを入れるようの配列を用意
       @posts = []
-      # find_itemメソッドで処理
       find_post(category)
-
-    # 孫カテゴリーを選択していた場合の処理
+      @message = "『 #{@category.name} 』の検索結果"
     elsif @category.ancestry.include?("/")
-      # Categoryモデル内の親カテゴリーに紐づく孫カテゴリーのidを取得
       @posts = Post.where(category_id: params[:id])
-
-    # 子カテゴリーを選択していた場合の処理
+      @message = "『 #{@category.parent.parent.name} 』 > 『 #{@category.parent.name} 』 > 『 #{@category.name} 』の検索結果"
     else
       category = Category.find_by(id: params[:id]).child_ids
-      # 孫カテゴリーに該当するitemsテーブルのレコードを入れるようの配列を用意
       @posts = []
-      # find_itemメソッドで処理
       find_post(category)
+      @message = "『 #{@category.parent.name} 』 > 『 #{@category.name} 』の検索結果"
     end
+    render :index
   end
 
   private

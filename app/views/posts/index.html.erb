@@ -2,6 +2,9 @@
 <% unless  user_signed_in? %>
   <%= render "shared/registrations" %>
 <% end %>
+<div class="message">
+  <%= @message %>
+</div>
 <div class="posts-index">
   <div class="post">
     <p>ユーザーネーム 2021年09月10日</p>

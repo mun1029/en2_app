@@ -12,10 +12,12 @@ $(function() {
 
   $(".cate-title").on("mouseenter", function() {
     $(this).attr({"style": "color: blue;"});
+    $(".category_list").attr({"style": "display:flex;"});
     $(".parents_list").attr({"style": "display:block;"});
   });
   $(".category_list").on("mouseleave", function() {
     $(".now-selected-parent").removeClass("now-selected-parent")
+    $(".category_list").attr({"style": "display:none;"});
     $(".cate-title").attr({"style": "color: black;"});
     $(".parents_list").attr({"style": "display:none;"});
     $(".children_list").attr({"style": "display:none;"});

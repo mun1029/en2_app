@@ -1,3 +1,9 @@
+.message{
+  padding: 20px 0 5px 100px;
+  font-size: 25px;
+  background-color: #f6f6f4;
+  
+}
 .posts-index {
   background-color: #f6f6f4;
   height: 100%;
