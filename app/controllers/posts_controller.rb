@@ -19,7 +19,7 @@ class PostsController < ApplicationController
   end
 
   def get_category_grandchildren
-    @category_grandchildren = Category.find_by(name: "#{params[:child_name]}").children
+    @category_grandchildren = Category.find_by(id: "#{params[:children_id]}").children
   end
 
   def create
@@ -49,12 +49,12 @@ class PostsController < ApplicationController
       @message = "『 #{@category.name} 』の検索結果"
     elsif @category.ancestry.include?("/")
       @posts = Post.where(category_id: params[:id])
-      @message = "『 #{@category.parent.parent.name} 』 > 『 #{@category.parent.name} 』 > 『 #{@category.name} 』の検索結果"
+      @message = "『 #{@category.root.name} 』 > 『 #{@category.parent.name} 』 > 『 #{@category.name} 』の検索結果"
     else
       category = Category.find_by(id: params[:id]).child_ids
       @posts = []
       find_post(category)
-      @message = "『 #{@category.parent.name} 』 > 『 #{@category.name} 』の検索結果"
+      @message = "『 #{@category.root.name} 』 > 『 #{@category.name} 』の検索結果"
     end
     @user = User.find(current_user.id)
     render :index
@@ -78,8 +78,7 @@ class PostsController < ApplicationController
   end
 
   def post_params
-    category = Category.find_by(name: params[:category_id])
-    params.permit(:title, :text).merge(user_id: current_user.id, category_id: category.id )
+    params.permit(:title, :text).merge(user_id: current_user.id, category_id: params[:grandchildren_id] )
   end
 end
 
