@@ -1,19 +1,19 @@
 window.addEventListener('DOMContentLoaded', function(){
-  $('#post-text-area').on('input', function() {
-    var content = $('#post-text-area').val();
-    console.log(content);
+  $('#post-text-area').on('keyup', function() {
+    var text = $('#post-text-area').val();
+
+   
 
     $.ajax({
-      url: 'preview_posts',
+      url: '/api/posts/preview',
       dataType: 'json',
       type: 'GET',
-      data: { body: content }
+      data: { body: text }
     })
 
-    .done(function(html) {
-      // ajax成功したら、テキストエリアを非表示にする。
-      $('post-preview').append(html.body);
-      // markdownボタンとpreviewボタンのdisabledを入れ替える。
+    .done(function(html) {   
+      $('#post-text-preview').empty();
+      $('#post-text-preview').append(html.body);
     })
   });
 });

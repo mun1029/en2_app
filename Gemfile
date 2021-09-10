@@ -55,6 +55,5 @@ gem 'devise'
 gem 'pry-rails'
 gem 'ancestry'
 gem 'redcarpet'
-gem 'rouge'
 
 gem 'jquery-rails'

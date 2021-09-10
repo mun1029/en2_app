@@ -11,9 +11,10 @@
     </div>
     <div class="post-main">
       <div class="post-text">
-        <%= f.text_area :text, class:"post-text" %>
+        <%= f.text_area :text, required: true, class:"post-text", id:"post-text-area" %>
       </div>
-      <div class="post-text-preview">
+      <div class="post-text-preview" id="post-text-preview" >
+        <button type="button" id="post-preview">プレビュー</button>
 
       </div>
     </div>
