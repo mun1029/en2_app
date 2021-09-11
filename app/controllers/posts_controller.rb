@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
   before_action :set_category_list, only: [:index, :new, :edit,:update, :select_category_index]
-  before_action :set_post, only: [:edit, :update]
+  before_action :set_post, only: [:edit, :update, :destroy]
   before_action :set_category_select, only:[:edit, :update]
   def index
     @posts = Post.all.order("created_at DESC")
@@ -33,13 +33,9 @@ class PostsController < ApplicationController
   end
 
   def edit
-    # @post = Post.find(params[:id])
-
-    
   end
 
   def update
-    
     if @post.update(post_params)
       redirect_to root_path
     else
@@ -49,7 +45,6 @@ class PostsController < ApplicationController
   end
 
   def destroy
-    @post = Post.find(params[:id])
     @post.destroy
     redirect_to user_path(current_user.id)
   end
