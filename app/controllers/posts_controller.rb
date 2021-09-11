@@ -1,6 +1,7 @@
 class PostsController < ApplicationController
-  before_action :set_category_list, only: [:index, :new, :edit, :select_category_index]
-
+  before_action :set_category_list, only: [:index, :new, :edit,:update, :select_category_index]
+  before_action :set_post, only: [:edit, :update]
+  before_action :set_category_select, only:[:edit, :update]
   def index
     @posts = Post.all.order("created_at DESC")
     @user = User.find(current_user.id)
@@ -32,32 +33,17 @@ class PostsController < ApplicationController
   end
 
   def edit
-    @post = Post.find(params[:id])
+    # @post = Post.find(params[:id])
 
-    # grandchild_category = @post.category
-    # child_category = grandchild_category.parent
-
-    # @category_parent_array = []
-    # Category.where(ancestry: nil).each do |parent|
-    #   @category_parent_array << parent.name
-    # end
-
-    # @category_children_array = []
-    # Category.where(ancestry: child_category.ancestry).each do |children|
-    #   @category_children_array << children
-    # end
-
-    # @category_grandchildren_array = []
-    # Category.where(ancestry: grandchild_category.ancestry).each do |grandchildren|
-    #   @category_grandchildren_array << grandchildren
-    # end
+    
   end
 
   def update
-    post = Post.find(params[:id])
-    if post.update(post_params)
+    
+    if @post.update(post_params)
       redirect_to root_path
     else
+      @post = Post.find(params[:id])
       render :edit
     end
   end
@@ -89,6 +75,30 @@ class PostsController < ApplicationController
   end
 
   private
+
+  def set_post
+    @post = Post.find(params[:id])
+  end
+
+  def set_category_select
+    grandchild_category = @post.category
+    child_category = grandchild_category.parent
+
+    @category_parent_array = []
+    Category.where(ancestry: nil).each do |parent|
+      @category_parent_array << parent.name
+    end
+
+    @category_children_array = []
+    Category.where(ancestry: child_category.ancestry).each do |children|
+      @category_children_array << children
+    end
+
+    @category_grandchildren_array = []
+    Category.where(ancestry: grandchild_category.ancestry).each do |grandchildren|
+      @category_grandchildren_array << grandchildren
+    end
+  end
 
   def find_post(category)
     category.each do |id|

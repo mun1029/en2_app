@@ -8,7 +8,7 @@ $(function(){
     let childrenSelectHtml = '';
     childrenSelectHtml = `
       <div id='children-wrapper'>
-        <select id='children-category' class='form-control' name='[children_id]'>
+        <select id='children-category' class='listing-select-wrapper__added' name='[children_id]'>
           <option value='---' data-category='---'>---</option>
           ${insertHTML}
         </select>
@@ -22,7 +22,7 @@ $(function(){
     let grandchildrenSelectHtml = '';
     grandchildrenSelectHtml = `
       <div id='grandchildren-wrapper'>
-        <select id='grandchildren-category' class='form-control' name='[grandchildren_id]'>
+        <select id='grandchildren-category' class='listing-select-wrapper__added' name='[grandchildren_id]'>
           <option value='---' data-category='---'>---</option>
           ${insertHTML}
         </select>
@@ -36,7 +36,7 @@ $(function(){
     let parentId = document.getElementById('parent_category').value;
     if (parentId != '---') {
       $.ajax({
-        url: 'get_category_children',
+        url: '/posts/get_category_children',
         type: 'GET',
         data: {
           parent_name: parentId,
@@ -65,7 +65,7 @@ $(function(){
     let childrenId = $('#children-category option:selected').data('category');
     if (childrenId != '---') {
       $.ajax({
-        url: 'get_category_grandchildren',
+        url: '/posts/get_category_grandchildren',
         type: 'GET',
         data: {
           children_id: childrenId,

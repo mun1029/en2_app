@@ -11,5 +11,8 @@ Rails.application.routes.draw do
       get 'get_category_grandchildren', defaults: { format: 'json' }
     end
   end
+  namespace :api, format: 'json' do
+    get 'posts/preview'
+  end
   resources :categories, only: :new
 end
