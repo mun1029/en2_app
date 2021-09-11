@@ -8,7 +8,7 @@ $(function(){
     let childrenSelectHtml = '';
     childrenSelectHtml = `
       <div id='children-wrapper'>
-        <select id='children-category' class='form-control' name='[children_id]'>
+        <select id='children-category' class='listing-select-wrapper__added' name='[children_id]'>
           <option value='---' data-category='---'>---</option>
           ${insertHTML}
         </select>
@@ -22,7 +22,7 @@ $(function(){
     let grandchildrenSelectHtml = '';
     grandchildrenSelectHtml = `
       <div id='grandchildren-wrapper'>
-        <select id='grandchildren-category' class='form-control' name='[grandchildren_id]'>
+        <select id='grandchildren-category' class='listing-select-wrapper__added' name='[grandchildren_id]'>
           <option value='---' data-category='---'>---</option>
           ${insertHTML}
         </select>

@@ -1,9 +1,7 @@
 window.addEventListener('DOMContentLoaded', function(){
   $('#post-text-area').on('keyup', function() {
     var text = $('#post-text-area').val();
-
-   
-
+    console.log(text);
     $.ajax({
       url: '/api/posts/preview',
       dataType: 'json',

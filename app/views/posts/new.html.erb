@@ -5,7 +5,7 @@
       <%= f.text_field :title, class:"post-title-text", placeholder:"タイトル" %>
     </div>
     <div class="post-main">
-      <div class="post-text">
+      <div class="post-text-area">
         <div class="post-cate">
           <%= f.select :category, @category_parent_array, {}, {class: 'listing-select-wrapper__box--select', id: 'parent_category'}%>
           <div class='listing-product-detail__category'>

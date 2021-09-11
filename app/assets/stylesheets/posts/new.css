@@ -13,16 +13,12 @@
 
 .post-cate, .listing-product-detail__category {
   display: flex;
-  margin-left: 5px;
 }
-.listing-select-wrapper__box--select {
-  width: 90px;
-  height: 30px;
-  margin: 5px 0px;
-}
+.listing-select-wrapper__box--select,
 .listing-select-wrapper__added {
+  width: 180px;
   height: 30px;
-  margin-right: 10px;
+  margin: 0px 10px 10px 0px;
 }
 :focus {
   outline: none;  
@@ -30,19 +26,20 @@
 .post-main {
   display: flex;
 }
+.post-text-area{
+  padding: 10px;
+}
 .post-text {
   width: 49vw;
   height: 70vh;
-  margin-left: 5px;
-  margin-right: 12px;
   resize: none;
+  padding: 10px;
 }
-
 .post-icon-preview {
   background-color: bisque;
-  height: 25px;
-  width:75px;
-  margin-top: 15px;
+  height: 30px;
+  width: 49vw;
+  margin-top: 20px;
   padding: 3px 0px 0px 5px;
   border: 1px solid black;
   border-bottom: none;
@@ -52,13 +49,21 @@
   width: 49vw;
   height: 70vh;
   border: 1px solid black;
+  padding: 10px;
+  overflow: scroll;
 }
 
 .post-action {
   text-align: right;
 }
 .post-btn {
-  margin: 15px 30 px 0px 0px;
+  margin: 5px 30px 0px 0px;
   padding: 5px;
   font-size: 20px;
+}
+.post-text-preview pre{
+  background-color: lightgray;
+  width: 100%;
+  border-radius: 10px;
+  padding: 10px;
 }
