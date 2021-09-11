@@ -1,0 +1,25 @@
+<%# <%= render 'shared/header' %> %>
+<div class="posts-new">
+  <%= @post.id %>
+  <%= form_with mdoel: @post, local: true do |f| %>
+    <div class="post-new-title">
+      <%= f.text_field :title, class:"post-title-text", placeholder:"タイトル" %>
+    </div>
+    <div class="post-cate">
+      <%# <%= f.select :category, @category_parent_array, {select:@post.category.parent.parent.name}, {class: 'listing-select-wrapper__box--select', id: 'parent_category'} %> %>
+      <%# <%= f.select :child_id, options_for_select(@category_children_array.map{|b| [b.name, b.id, {data:{category: b.id}}]}, {prompt: "指定なし", selected: @post.category.parent.id}),{}, {class: 'category-wrapper__category form-control', id: 'child_category'} %> %>
+      <%# <%= f.select :category_id, options_for_select(@category_grandchildren_array.map{|b| [b.name, b.id, {data:{category: b.id}}]}, {prompt: "指定なし", selected: @post.category.id}),{}, {class: 'category-wrapper__category form-control', id: 'grandchild_category'}%> %>
+    </div>
+    <div class="post-main">
+      <div class="post-text">
+        <%= f.text_area :text, class:"post-text" %>
+      </div>
+      <div class="post-text-preview">
+        
+      </div>
+    </div>
+    <div class="post-action">
+      <%= f.submit "投稿する", class:"post-btn" %>
+    </div>
+  <% end %>
+</div>

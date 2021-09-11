@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-  before_action :set_category_list, only: [:index, :new, :select_category_index]
+  before_action :set_category_list, only: [:index, :new, :edit, :select_category_index]
 
   def index
     @posts = Post.all.order("created_at DESC")
@@ -32,6 +32,34 @@ class PostsController < ApplicationController
   end
 
   def edit
+    @post = Post.find(params[:id])
+
+    # grandchild_category = @post.category
+    # child_category = grandchild_category.parent
+
+    # @category_parent_array = []
+    # Category.where(ancestry: nil).each do |parent|
+    #   @category_parent_array << parent.name
+    # end
+
+    # @category_children_array = []
+    # Category.where(ancestry: child_category.ancestry).each do |children|
+    #   @category_children_array << children
+    # end
+
+    # @category_grandchildren_array = []
+    # Category.where(ancestry: grandchild_category.ancestry).each do |grandchildren|
+    #   @category_grandchildren_array << grandchildren
+    # end
+  end
+
+  def update
+    post = Post.find(params[:id])
+    if post.update(post_params)
+      redirect_to root_path
+    else
+      render :edit
+    end
   end
 
   def destroy
