@@ -36,7 +36,7 @@ $(function(){
     let parentId = document.getElementById('parent_category').value;
     if (parentId != '---') {
       $.ajax({
-        url: 'get_category_children',
+        url: '/posts/get_category_children',
         type: 'GET',
         data: {
           parent_name: parentId,
@@ -65,7 +65,7 @@ $(function(){
     let childrenId = $('#children-category option:selected').data('category');
     if (childrenId != '---') {
       $.ajax({
-        url: 'get_category_grandchildren',
+        url: '/posts/get_category_grandchildren',
         type: 'GET',
         data: {
           children_id: childrenId,
