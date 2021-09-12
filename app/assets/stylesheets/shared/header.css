@@ -53,7 +53,7 @@
 .parents_list, .children_list, .grand_children_list{
   display: none;
   width: 180px;
-  height: 340px;
+  height: 380px;
   background-color: snow;
 }
 .parent_category,.child_category,.grand_child_category{

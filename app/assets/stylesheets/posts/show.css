@@ -32,5 +32,13 @@
   background-color: white;
   height: 600px;
   margin: 15px 0px 10px 0px;
+  padding: 10px;
   
 } 
+
+.post-show-preview pre{
+  background-color: lightgray;
+  width: 100%;
+  border-radius: 10px;
+  padding: 10px;
+}
