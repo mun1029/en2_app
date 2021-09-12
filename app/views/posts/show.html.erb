@@ -1,7 +1,7 @@
 <%= render 'shared/header' %>
 <div class="post-show">
   <div class="post-show-main">
-    <div class="post-show-time"><%= @post.user.nickname %>が<%= @post.created_at.strftime("%Y/%m/%d") %>に更新</div>
+    <div class="post-show-time"><%= link_to @post.user.nickname, user_path(@post.user_id) %>が<%= @post.created_at.strftime("%Y/%m/%d") %>に更新</div>
     <div class="post-show-title">
       <%= @post.title %>
     <div>
