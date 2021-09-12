@@ -7,7 +7,7 @@ class PostsController < ApplicationController
   before_action :move_to_index, only: [:edit, :update, :destory]
 
   def index
-    @posts = Post.all.order("created_at DESC").includes(:user)
+    @posts = Post.all.order("created_at DESC").includes(:user).page(params[:page]).per(10)
   end
 
   def new
@@ -73,12 +73,14 @@ class PostsController < ApplicationController
       @message = "『 #{@category.root.name} 』 > 『 #{@category.name} 』の検索結果"
     end
     @posts = sort_post(@posts)
+    @posts = Kaminari.paginate_array(@posts).page(params[:page])
     render :index
   end
 
   def keyword_search
     @posts = Post.search_keyword(params[:keyword])
     @posts = sort_post(@posts)
+    @posts = Kaminari.paginate_array(@posts).page(params[:page])
     @message = "『 #{params[:keyword]} 』の検索結果"
     render :index
   end

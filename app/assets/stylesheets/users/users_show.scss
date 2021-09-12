@@ -1,6 +1,5 @@
 .my-page{
   padding: 30px;
-  height: 100vh;
   width: calc( 100% - 100px );
   display: flex;
 }
@@ -80,10 +79,10 @@
 
 .main{
   width: 60%;
-  height: 100vh;
+  height: 1120px;
   background-color: rgb(252, 233, 198);
   border-radius: 10px;
-  padding: 10px;
+  padding: 20px;
   margin-top: 15px;
   margin-left: 10px;
   margin-right: 10px;
