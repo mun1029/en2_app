@@ -11,7 +11,7 @@ RSpec.describe Post, type: :model do
         expect(@post).to be_valid
       end
     end
-    context '投稿が保存でない場合' do
+    context '投稿が保存できない場合' do
       it 'titleが空では投稿が保存できない' do
         @post.title = ""
         @post.valid?
