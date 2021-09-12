@@ -12,7 +12,7 @@
             <%= f.select :child_id, options_for_select(@category_children_array.map{|b| [b.name, b.id, {data:{category: b.id}}]}, {prompt: "指定なし", selected: @post.category.parent.id}),{}, {id: 'children-category', class: 'listing-select-wrapper__added'} %>
           </div>
           <div id='grandchildren-wrapper'>
-            <%= f.select :category_id, options_for_select(@category_grandchildren_array.map{|b| [b.name, b.id, {data:{category: b.id}}]}, {prompt: "指定なし", selected: @post.category.id}),{}, {id: 'grandchildren-category', class:'listing-select-wrapper__added'} %>
+            <%= f.select :grandchildren_id, options_for_select(@category_grandchildren_array.map{|b| [b.name, b.id, {data:{category: b.id}}]}, {prompt: "指定なし", selected: @post.category.id}),{}, {id: 'grandchildren-category', class:'listing-select-wrapper__added'} %>
           </div>
         </div>
         <%= f.text_area :text, required: true, value:@post.text, class:"post-text", id:"post-text-area" %>
