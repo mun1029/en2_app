@@ -2,6 +2,30 @@
   <div class="header-left-content">
     <%= link_to "EN2(logo)", root_path %>
   </div>
+  <div class="header-center-content">
+    <div class="header-centerleft-content">
+      <%= form_with(url: keyword_search_posts_path, local: true, method: :get, class: "search_word") do |f| %>
+        <%= f.text_field :keyword, placeholder: "検索ワード入力", class: "search-input" %>
+        <%= f.submit "検索", class: "search-btn" %>
+      <% end %>
+    </div>
+    <div class="header-center-right-content">
+      <div class="cate-search-lists">
+        <div class="cate-title">カテゴリーから探す▼</div>
+        <div class="category_list">
+          <ul class="parents_list">
+            <% @parents.each do |parent| %>
+              <li><%= link_to "#{parent.name}",select_category_index_post_path(parent.id), class: "parent_category",id: "#{parent.id}" %> </li>
+            <% end %>
+          </ul>
+          <ul class="children_list">
+          </ul>
+          <ul class="grand_children_list">
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
   <div class="header-right-content">
     <%= button_to "投稿", {controller: 'posts', action: 'new'}, {method: :get, class: 'new-btn'} %>
     <% if user_signed_in? %>
@@ -11,29 +35,5 @@
       <%= link_to 'ログイン',  new_user_session_path %>
       <%= link_to '新規登録', new_user_registration_path %>
     <% end %>
-  </div>
-</div>
-<div class="header-bottom">
-  <div class="header-bottom-left-content">
-    <%= form_with(url: keyword_search_posts_path, local: true, method: :get, class: "search_word") do |f| %>
-      <%= f.text_field :keyword, placeholder: "検索ワード入力", class: "search-input" %>
-      <%= f.submit "検索", class: "search-btn" %>
-    <% end %>
-  </div>
-  <div class="header-bottom-right-content">
-    <div class="cate-search-lists">
-      <div class="cate-title">カテゴリーから探す▼</div>
-      <div class="category_list">
-        <ul class="parents_list">
-          <% @parents.each do |parent| %>
-            <li><%= link_to "#{parent.name}",select_category_index_post_path(parent.id), class: "parent_category",id: "#{parent.id}" %> </li>
-          <% end %>
-        </ul>
-        <ul class="children_list">
-        </ul>
-        <ul class="grand_children_list">
-        </ul>
-      </div>
-    </div>
   </div>
 </div>
