@@ -15,10 +15,10 @@
 </div>
 <div class="header-bottom">
   <div class="header-bottom-left-content">
-    キーワード検索：
-    <form>
-      <input type="text" placeholder="Ruby.." class="search_word">
-    </form>
+    <%= form_with(url: keyword_search_posts_path, local: true, method: :get, class: "search_word") do |f| %>
+      <%= f.text_field :keyword, placeholder: "検索ワード入力", class: "search-input" %>
+      <%= f.submit "検索", class: "search-btn" %>
+    <% end %>
   </div>
   <div class="header-bottom-right-content">
     <div class="cate-search-lists">

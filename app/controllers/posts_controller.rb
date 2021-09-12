@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-  before_action :set_category_list, only: [:index, :new,:show, :edit, :update, :select_category_index]
+  before_action :set_category_list, only: [:index, :new,:show, :edit, :update, :select_category_index, :keyword_search]
   before_action :set_post, only: [:edit, :update, :destroy, :show]
   before_action :set_category_select, only:[:edit, :update]
 
@@ -72,6 +72,13 @@ class PostsController < ApplicationController
     end
     @user = User.find(current_user.id)
     @posts = sort_post(@posts)
+    render :index
+  end
+
+  def keyword_search
+    @posts = Post.search_keyword(params[:keyword])
+    @user = User.find(current_user.id)
+    @message = "『 #{params[:keyword]} 』の検索結果"
     render :index
   end
 
