@@ -77,6 +77,7 @@ class PostsController < ApplicationController
 
   def keyword_search
     @posts = Post.search_keyword(params[:keyword])
+    @posts = sort_post(@posts)
     @user = User.find(current_user.id)
     @message = "『 #{params[:keyword]} 』の検索結果"
     render :index
