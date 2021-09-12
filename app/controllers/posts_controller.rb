@@ -4,7 +4,7 @@ class PostsController < ApplicationController
   before_action :set_category_select, only:[:edit, :update]
 
   def index
-    @posts = Post.all.order("created_at DESC")
+    @posts = Post.all.order("created_at DESC").includes(:user)
     @user = User.find(current_user.id)
   end
 
@@ -71,6 +71,7 @@ class PostsController < ApplicationController
       @message = "『 #{@category.root.name} 』 > 『 #{@category.name} 』の検索結果"
     end
     @user = User.find(current_user.id)
+    @posts = sort_post(@posts)
     render :index
   end
 
@@ -117,6 +118,10 @@ class PostsController < ApplicationController
 
   def post_params
     params.permit(:title, :text).merge(user_id: current_user.id, category_id: params[:grandchildren_id] )
+  end
+
+  def sort_post(posts)
+    posts.sort_by{|post| post.created_at}.reverse!
   end
 end
 
