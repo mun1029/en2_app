@@ -89,6 +89,11 @@ $(function(){
       $('#grandchildren-wrapper').remove();
     }
   });
+
+  $('#post-text-area').scroll(function() {
+    let scroll = $(this).scrollTop();
+    $('.post-text-preview').scrollTop(scroll);
+  });
 });
 
 
