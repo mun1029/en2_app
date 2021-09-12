@@ -1,7 +1,8 @@
 class PostsController < ApplicationController
-  before_action :set_category_list, only: [:index, :new, :edit,:update, :select_category_index]
-  before_action :set_post, only: [:edit, :update, :destroy]
+  before_action :set_category_list, only: [:index, :new,:show, :edit, :update, :select_category_index]
+  before_action :set_post, only: [:edit, :update, :destroy, :show]
   before_action :set_category_select, only:[:edit, :update]
+
   def index
     @posts = Post.all.order("created_at DESC")
     @user = User.find(current_user.id)
@@ -13,6 +14,10 @@ class PostsController < ApplicationController
     Category.where(ancestry: nil).each do |parent|
       @category_parent_array << parent.name
     end
+  end
+
+  def show
+    
   end
 
   def get_category_children

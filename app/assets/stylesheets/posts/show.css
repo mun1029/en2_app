@@ -1,0 +1,36 @@
+.post-show {
+  background-color: #f6f6f4;
+  padding-top: 10px;
+  height: 100vh;
+}
+.post-show-main {
+  background-color: bisque;
+  width: 90%;
+  height: 95%;
+  margin: 0 auto;
+  overflow: scroll;
+}
+.post-show-time {
+  padding: 10px 0px 0px 20px;
+  font-size: 15px;
+}
+.post-show-title {
+  width: 95%;
+  margin: 0px auto;
+  padding-top: 5px;
+  font-size: 25px;
+}
+.post-show-cate {
+  border-bottom: 1px solid orange;
+}
+.post-show-cates {
+  background-color: #f6f6f4;
+  font-size: 18px;
+  padding: 3px;
+}
+.post-show-preview {
+  background-color: white;
+  height: 600px;
+  margin: 15px 0px 10px 0px;
+  
+} 
