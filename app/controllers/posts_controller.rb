@@ -1,11 +1,13 @@
 class PostsController < ApplicationController
+  before_action :authenticate_user!, only: [:new, :create, :destroy, :edit, :update]
   before_action :set_category_list, only: [:index, :new,:show, :edit, :update, :select_category_index, :keyword_search]
   before_action :set_post, only: [:edit, :update, :destroy, :show]
+  before_action :set_user, only: [:index, :select_category_index, :keyword_search]
   before_action :set_category_select, only:[:edit, :update]
+  before_action :move_to_index, only: [:edit, :update, :destory]
 
   def index
     @posts = Post.all.order("created_at DESC").includes(:user)
-    @user = User.find(current_user.id)
   end
 
   def new
@@ -70,7 +72,6 @@ class PostsController < ApplicationController
       find_post(category)
       @message = "『 #{@category.root.name} 』 > 『 #{@category.name} 』の検索結果"
     end
-    @user = User.find(current_user.id)
     @posts = sort_post(@posts)
     render :index
   end
@@ -78,12 +79,16 @@ class PostsController < ApplicationController
   def keyword_search
     @posts = Post.search_keyword(params[:keyword])
     @posts = sort_post(@posts)
-    @user = User.find(current_user.id)
     @message = "『 #{params[:keyword]} 』の検索結果"
     render :index
   end
 
   private
+  def set_user
+    if user_signed_in?
+      @user = User.find(current_user.id)
+    end
+  end
 
   def set_post
     @post = Post.find(params[:id])
@@ -109,6 +114,12 @@ class PostsController < ApplicationController
     end
   end
 
+  def move_to_index
+    if current_user.id != @post.user.id
+      redirect_to action: :index
+    end
+  end
+
   def find_post(category)
     category.each do |id|
       post_array = Post.includes(:user).where(category_id: id)
@@ -131,5 +142,7 @@ class PostsController < ApplicationController
   def sort_post(posts)
     posts.sort_by{|post| post.created_at}.reverse!
   end
+
+  
 end
 
