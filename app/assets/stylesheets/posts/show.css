@@ -18,7 +18,9 @@
   width: 95%;
   margin: 0px auto;
   padding-top: 5px;
+  padding-bottom: 50px;
   font-size: 25px;
+  display: flex;
 }
 .post-show-cate {
   border-bottom: 1px solid orange;
@@ -35,10 +37,26 @@
   padding: 10px;
   
 } 
-
 .post-show-preview pre{
   background-color: lightgray;
   width: 100%;
   border-radius: 10px;
   padding: 10px;
+}
+.icon-btn {
+  background-color: bisque;
+  padding: 0px;
+  border: none;
+}
+.post-show-favorite {
+  height: 40px;
+  display: block;
+}
+.post-show-favorite p {
+  padding-bottom: 5px;
+}
+.post-show-favorite-icon {
+  width: 50px;
+  height: 50px;
+  padding: 3px;
 }

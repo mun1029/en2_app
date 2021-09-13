@@ -1,8 +1,10 @@
 Rails.application.routes.draw do
   devise_for :users
-  resources :users, only: :show
   root to:'posts#index'
+
+  resources :users, only: :show
   resources :posts do
+    resources :favorites, only: [:create, :destroy]
     member do
       get 'select_category_index'
     end
@@ -14,8 +16,10 @@ Rails.application.routes.draw do
       get 'keyword_search'
     end
   end
+
   namespace :api, format: 'json' do
     get 'posts/preview'
   end
+
   resources :categories, only: :new
 end
