@@ -52,17 +52,15 @@
   color: black;
 }
 
-.my-cate{
+
+.favorite-user{
   padding: 5px 10px;
-  font-size: 11px;
+  font-size: 20px;
   background-color: #f6f6f4;
   margin-top: 10px;
-  text-align: center;
-}
-
-.my-cate a{
-  text-decoration: none;
-  color: black;
+  margin-left: 15%;
+  width: 70%;
+  display: block;
 }
 
 .user-name{
@@ -139,4 +137,17 @@
 a{
   text-decoration: none;
   color: black;
+}
+
+.my-post-bottom{
+  display: flex;
+}
+
+.my-post-favorite{
+  display: flex;
+}
+.post-favorite-icon{
+  height: 18px;
+  width: 18px;
+  margin: 0 5px 3px 5px;
 }

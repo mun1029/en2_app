@@ -4,28 +4,25 @@
   <div class="side-bar">
     <div class="my-profile">
       <div class="user-name">
-        <h1> <%= current_user.nickname %> </h1>
+        <h1> <%= @user.nickname %> </h1>
       </div>
       <h2>Links</h2>
       <div class="my-links">
-        <div class="my-link"><a href="#">投稿</a></div>
-        <div class="my-link"><a href="#">お気に入り</a></div>
+        <%= link_to "my投稿",user_path(@user.id), class: "my-link" %>
+        <%= link_to "お気に入り",favorite_posts_show_user_path(@user.id), class: "my-link" %>
       </div>
     </div>
     <div class="cate-search">
-      <h2>カテゴリー検索</h2>
+      <h2>お気に入りユーザ</h2>
       <div class="my-cates">
-        <div class="my-cate"><a href="#">pyton</a></div>
-        <div class="my-cate"><a href="#">ruby</a></div>
-        <div class="my-cate"><a href="#">HTML・CSS</a></div>
-        <div class="my-cate"><a href="#">ruby on rails</a></div>
-        <div class="my-cate"><a href="#">javaScript</a></div>
-        <div class="my-cate"><a href="#">jquery</a></div>
+        <% @favorite_users.each do |favorite_user| %>
+          <%= link_to "#{favorite_user.nickname}",user_path(favorite_user.id), class: "favorite-user" %>
+        <% end %>
       </div>
     </div>
   </div>
   <div class="main">
-    <h2><%= current_user.nickname %>さんの投稿一覧</h2>
+    <h2><%= @message %></h2>
     <%= render partial: "shared/post_index", locals: { posts: @posts } %>
   </div>
 </div>
