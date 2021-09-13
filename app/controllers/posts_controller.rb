@@ -7,6 +7,7 @@ class PostsController < ApplicationController
   before_action :move_to_index, only: [:edit, :update, :destory]
 
   def index
+    @user = User.new
     @posts = Post.all.order("created_at DESC").includes(:user).page(params[:page]).per(10)
   end
 
