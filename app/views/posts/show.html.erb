@@ -8,13 +8,17 @@
         <% if current_user.already_liked?(@post) %>
           <%= button_to post_favorite_path(@post), method: :delete, class:"icon-btn" do  %>
             <%= image_tag 'favorite-true.png', class:"post-show-favorite-icon" %>
-            <p><%= @post.favorites.count %></p>
           <% end %>
+          <div class="post-show-favorite-count">
+            <p><%= @post.favorites.count %></p>
+          </div>
         <% else %>
           <%= button_to post_favorites_path(@post), class:"icon-btn" do %>
             <%= image_tag 'favorite.png', class:"post-show-favorite-icon" %>
-            <p><%= @post.favorites.count %></p>
           <% end %>
+          <div class="post-show-favorite-count">
+            <%= @post.favorites.count %>
+          </div>
         <% end %>
       </div>
     </div>
