@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   before_action :authenticate_user!, only: [:show, :favorite_posts_show]
   before_action :set_category_list, only: [:show, :favorite_posts_show]
   before_action :set_users_content, only: [:show, :favorite_posts_show]
-  
+
   def show
     @posts = @user.posts.order("created_at DESC").page(params[:page]).per(10)
     @message = "#{@user.nickname}さんの投稿一覧"
@@ -22,6 +22,7 @@ class UsersController < ApplicationController
     @favorite_posts.each do |favo_post|
       @favorite_users.push(favo_post.user)
     end
+    @favorite_users = @favorite_users.uniq
   end
 
   def user_params
