@@ -2,7 +2,7 @@
   <% posts.each do |post| %>
     <div class="my-index">
       <div class="my-post-header">
-        <div class="my-post-date"> 投稿日時　<%= post.created_at.strftime("%Y/%m/%d %H:%M") %> </div>
+        <div class="my-post-date"> <%= link_to post.user.nickname, user_path(post.user_id) %>が<%= post.created_at.strftime("%Y/%m/%d") %>に更新 </div>
         <% if user_signed_in? && @user.id == current_user.id%>
           <div class="my-post-edit"> <%= link_to "編集", edit_post_path(post.id) %></div>
           <div class="my-post-delete"> <%= link_to "削除", post_path(post.id), method: :delete %></div>

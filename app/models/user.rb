@@ -6,6 +6,9 @@ class User < ApplicationRecord
   has_many :posts
   has_many :favorites
   has_many :favorite_words, through: :favorites, source: :post
+  def already_liked?(post)
+    self.favorites.exists?(post_id: post.id)
+  end
 
   validates :nickname, presence: true
 

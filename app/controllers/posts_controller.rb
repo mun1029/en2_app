@@ -19,6 +19,7 @@ class PostsController < ApplicationController
   end
 
   def show
+    @favorite = Favorite.new
     
   end
 
