@@ -2,7 +2,11 @@ Rails.application.routes.draw do
   devise_for :users
   root to:'posts#index'
 
-  resources :users, only: :show
+  resources :users, only: :show do
+    member do
+      get 'favorite_posts_show'
+    end
+  end
   resources :posts do
     resources :favorites, only: [:create, :destroy]
     member do
