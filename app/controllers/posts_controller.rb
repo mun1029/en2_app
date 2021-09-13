@@ -63,15 +63,15 @@ class PostsController < ApplicationController
       category = Category.find_by(id: params[:id]).indirect_ids
       @posts = []
       find_post(category)
-      @message = "『 #{@category.name} 』の検索結果"
+      @message = "『 #{@category.name} 』の検索結果 : #{@posts.length}件"
     elsif @category.ancestry.include?("/")
       @posts = Post.where(category_id: params[:id])
-      @message = "『 #{@category.root.name} 』 > 『 #{@category.parent.name} 』 > 『 #{@category.name} 』の検索結果"
+      @message = "『 #{@category.root.name} 』 > 『 #{@category.parent.name} 』 > 『 #{@category.name} 』の検索結果 : #{@posts.length}件"
     else
       category = Category.find_by(id: params[:id]).child_ids
       @posts = []
       find_post(category)
-      @message = "『 #{@category.root.name} 』 > 『 #{@category.name} 』の検索結果"
+      @message = "『 #{@category.root.name} 』 > 『 #{@category.name} 』の検索結果 : #{@posts.length}件"
     end
     @posts = sort_post(@posts)
     @posts = Kaminari.paginate_array(@posts).page(params[:page])
@@ -81,8 +81,8 @@ class PostsController < ApplicationController
   def keyword_search
     @posts = Post.search_keyword(params[:keyword])
     @posts = sort_post(@posts)
+    @message = "『 #{params[:keyword]} 』の検索結果 : #{@posts.length}件"
     @posts = Kaminari.paginate_array(@posts).page(params[:page])
-    @message = "『 #{params[:keyword]} 』の検索結果"
     render :index
   end
 
