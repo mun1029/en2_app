@@ -16,7 +16,8 @@
   letter-spacing: 3px;
   font-size: 20px;
   font-weight: 200;
-  border-bottom: 3px solid orange;
+  padding-top: 30px;
+  padding-left: 10px;
 }
 
 .side-bar h2{
@@ -77,13 +78,24 @@
 
 .main{
   width: 60%;
-  height: 1120px;
+  height: 1150px;
   background-color: rgb(252, 233, 198);
   border-radius: 10px;
-  padding: 20px;
+  padding: 0 20px;
   margin-top: 15px;
   margin-left: 10px;
   margin-right: 10px;
+}
+
+.main-header{
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 3px solid orange;
+}
+
+.page-content{
+  margin: 0 33% 10px 0;
+  height: 30px;
 }
 
 .my-index{

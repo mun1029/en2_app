@@ -7,7 +7,12 @@
 </div>
 <div class="posts-index">
   <div class="main">
-    <h2>投稿一覧</h2>
+    <div class="main-header">
+      <h2>投稿一覧</h2>
+      <div class="page-content">
+        <%= paginate @posts %> 
+      </div>
+    </div>
     <%= render partial: "shared/post_index", locals: { posts: @posts } %>
   </div>
   <div class="post-pick">
