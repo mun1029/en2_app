@@ -13,7 +13,7 @@
     <%= form_with model: @user, url: user_registration_path, class: 'top-new-registration', local: true do |f| %>
       <div class="registration-form">
         <div class="field">
-          <div class='field-label'>
+          <div class='registration-field-label'>
             <%= f.label :nickname, 'ニックネーム' %><br />
           </div>
           <div class='field-input'>
@@ -22,7 +22,7 @@
         </div>
 
         <div class="field">
-          <div class='field-label'>
+          <div class='registration-field-label'>
             <%= f.label :email, 'メールアドレス' %><br />
           </div>
           <div class='field-input'>
@@ -31,7 +31,7 @@
         </div>
 
         <div class="field">
-          <div class='field-label'>
+          <div class='registration-field-label'>
             <%= f.label :password, 'パスワード' %>
             <i>(英数字混合6文字以上)</i><br />
           </div>
@@ -41,7 +41,7 @@
         </div>
 
         <div class="field">
-          <div class='field-label'>
+          <div class='registration-field-label'>
             <%= f.label :password_confirmation, '確認用パスワード' %><br />
           </div>
           <div class='field-input'>

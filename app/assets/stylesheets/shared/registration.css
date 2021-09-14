@@ -35,9 +35,13 @@
   padding: 10px;
 }
 
+.registration-field-label{
+  margin-top: 7px;
+}
+
 .registration-actions{
   margin-right: 120px;
-  margin-top: 180px;
+  margin-top: 207px;
 }
 
 .registration-btn{
