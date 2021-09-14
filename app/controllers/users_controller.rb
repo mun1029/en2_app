@@ -20,7 +20,9 @@ class UsersController < ApplicationController
     @favorite_posts = @user.favorite_words.order("created_at DESC").limit(5)
     @favorite_users = []
     @favorite_posts.each do |favo_post|
-      @favorite_users.push(favo_post.user)
+      if favo_post.user.id != @user.id
+        @favorite_users.push(favo_post.user)
+      end
     end
     @favorite_users = @favorite_users.uniq
   end
