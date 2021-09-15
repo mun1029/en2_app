@@ -1,10 +1,13 @@
 class PostsController < ApplicationController
-  before_action :set_category_list, only: [:index, :new, :edit,:update, :select_category_index]
-  before_action :set_post, only: [:edit, :update, :destroy]
+  before_action :authenticate_user!, only: [:new, :create, :destroy, :edit, :update]
+  before_action :set_category_list, only: [:index, :new,:show, :edit, :update, :select_category_index, :keyword_search]
+  before_action :set_post, only: [:edit, :update, :destroy, :show]
+  before_action :set_user, only: [:index, :select_category_index, :keyword_search]
   before_action :set_category_select, only:[:edit, :update]
+  before_action :move_to_index, only: [:edit, :update, :destory]
+
   def index
-    @posts = Post.all.order("created_at DESC")
-    @user = User.find(current_user.id)
+    @posts = Post.all.order("created_at DESC").includes(:user).page(params[:page]).per(10)
   end
 
   def new
@@ -13,6 +16,11 @@ class PostsController < ApplicationController
     Category.where(ancestry: nil).each do |parent|
       @category_parent_array << parent.name
     end
+  end
+
+  def show
+    @favorite = Favorite.new
+    
   end
 
   def get_category_children
@@ -55,21 +63,37 @@ class PostsController < ApplicationController
       category = Category.find_by(id: params[:id]).indirect_ids
       @posts = []
       find_post(category)
-      @message = "『 #{@category.name} 』の検索結果"
+      @message = "『 #{@category.name} 』の検索結果 : #{@posts.length}件"
     elsif @category.ancestry.include?("/")
       @posts = Post.where(category_id: params[:id])
-      @message = "『 #{@category.root.name} 』 > 『 #{@category.parent.name} 』 > 『 #{@category.name} 』の検索結果"
+      @message = "『 #{@category.root.name} 』 > 『 #{@category.parent.name} 』 > 『 #{@category.name} 』の検索結果 : #{@posts.length}件"
     else
       category = Category.find_by(id: params[:id]).child_ids
       @posts = []
       find_post(category)
-      @message = "『 #{@category.root.name} 』 > 『 #{@category.name} 』の検索結果"
+      @message = "『 #{@category.root.name} 』 > 『 #{@category.name} 』の検索結果 : #{@posts.length}件"
     end
-    @user = User.find(current_user.id)
+    @posts = sort_post(@posts)
+    @posts = Kaminari.paginate_array(@posts).page(params[:page])
+    render :index
+  end
+
+  def keyword_search
+    @posts = Post.search_keyword(params[:keyword])
+    @posts = sort_post(@posts)
+    @message = "『 #{params[:keyword]} 』の検索結果 : #{@posts.length}件"
+    @posts = Kaminari.paginate_array(@posts).page(params[:page])
     render :index
   end
 
   private
+  def set_user
+    if user_signed_in?
+      @user = User.find(current_user.id)
+    else
+      @user = User.new
+    end
+  end
 
   def set_post
     @post = Post.find(params[:id])
@@ -95,6 +119,12 @@ class PostsController < ApplicationController
     end
   end
 
+  def move_to_index
+    if current_user.id != @post.user.id
+      redirect_to action: :index
+    end
+  end
+
   def find_post(category)
     category.each do |id|
       post_array = Post.includes(:user).where(category_id: id)
@@ -113,5 +143,11 @@ class PostsController < ApplicationController
   def post_params
     params.permit(:title, :text).merge(user_id: current_user.id, category_id: params[:grandchildren_id] )
   end
+
+  def sort_post(posts)
+    posts.sort_by{|post| post.created_at}.reverse!
+  end
+
+  
 end
 

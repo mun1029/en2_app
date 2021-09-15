@@ -1,0 +1,71 @@
+.post-show {
+  background-color: #f6f6f4;
+  padding-top: 10px;
+  height: calc(100vh - 68px );
+  
+}
+.post-show-main {
+  background-color: bisque;
+  width: 80%;
+  height: 95%;
+  margin: 0 auto;
+  padding: 0px 30px;
+  overflow: scroll;
+  border-radius: 10px;
+}
+.post-show-time {
+  padding: 10px 0px 0px 0px;
+  font-size: 15px;
+}
+.post-show-title {
+  width: 95%;
+  margin: 5px 0px 0px 5px;
+  padding-top: 5px;
+  padding-bottom: 15px;
+  font-size: 25px;
+  display: flex;
+}
+.post-show-cate {
+  border-bottom: 1px solid orange;
+  margin-left: 5px;
+}
+.post-show-cates {
+  background-color: #f6f6f4;
+  font-size: 18px;
+  padding: 3px;
+}
+.post-show-preview {
+  background-color: white;
+  height: calc(90% - 121px );
+  margin: 15px 0px 10px 0px;
+  padding: 10px;
+  
+} 
+.post-show-preview pre{
+  background-color: lightgray;
+  width: 100%;
+  border-radius: 10px;
+  padding: 10px;
+}
+.icon-btn {
+  background-color: bisque;
+  padding: 0px;
+  border: none;
+}
+.post-show-favorite {
+  height: 40px;
+  display: flex;
+  margin-left: auto;
+  padding-left: 10px;
+}
+
+.post-show-favorite-count p {
+  font-size: 15px;
+  line-height: 20px;
+  padding-top: 7px;
+}
+.post-show-favorite-icon {
+  width: 40px;
+  height: 40px;
+  padding: 3px;
+}

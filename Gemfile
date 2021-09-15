@@ -55,5 +55,6 @@ gem 'devise'
 gem 'pry-rails'
 gem 'ancestry'
 gem 'redcarpet'
+gem 'kaminari','~> 1.2.1'
 
 gem 'jquery-rails'

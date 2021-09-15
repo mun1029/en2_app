@@ -22,3 +22,26 @@
   margin-left: 10px;
   margin-right: 10px;
 }
+
+/* ページネーション */
+.pagination {
+  display: flex;
+  justify-content: center;
+}
+.pagination > li > a {
+  border: none;
+  color: #999;
+}
+.pagination > li > a:hover {
+  color: orange;
+  background-color: white;
+}
+.pagination > .active > a {
+  color: orange;
+  background-color: white;
+}
+.pagination > .active > a:hover {
+  background-color: white;
+  color: orange;
+}
+/* --ページネーション */

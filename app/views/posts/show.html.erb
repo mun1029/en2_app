@@ -1,0 +1,35 @@
+<%= render 'shared/header' %>
+<div class="post-show">
+  <div class="post-show-main">
+    <div class="post-show-time"><%= link_to @post.user.nickname, user_path(@post.user_id) %>が<%= @post.created_at.strftime("%Y/%m/%d") %>に更新</div>
+    <div class="post-show-title">
+      <%= @post.title %>
+      <div class="post-show-favorite">
+        <% if current_user.already_liked?(@post) %>
+          <%= button_to post_favorite_path(@post), method: :delete, class:"icon-btn" do  %>
+            <%= image_tag 'favorite-true.png', class:"post-show-favorite-icon" %>
+          <% end %>
+          <div class="post-show-favorite-count">
+            <p><%= @post.favorites.count %></p>
+          </div>
+        <% else %>
+          <%= button_to post_favorites_path(@post), class:"icon-btn" do %>
+            <%= image_tag 'favorite.png', class:"post-show-favorite-icon" %>
+          <% end %>
+          <div class="post-show-favorite-count">
+            <%= @post.favorites.count %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+
+    <div class="post-show-cate">
+      <%= link_to "#{@post.category.parent.parent.name}",select_category_index_post_path(@post.category.parent.parent.id), class: "post-show-cates" %>
+      <%= link_to "#{@post.category.parent.name}",select_category_index_post_path(@post.category.parent.id), class: "post-show-cates" %>
+      <%= link_to "#{@post.category.name}",select_category_index_post_path(@post.category.id), class: "post-show-cates" %>
+    </div>
+    <div class="post-show-preview">
+      <%= markdown(@post.text) %>
+    <div>
+  </div>
+</div>

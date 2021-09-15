@@ -1,7 +1,6 @@
 .my-page{
   padding: 30px;
   height: 100vh;
-  width: calc( 100% - 100px );
   display: flex;
 }
 
@@ -17,7 +16,8 @@
   letter-spacing: 3px;
   font-size: 20px;
   font-weight: 200;
-  border-bottom: 3px solid orange;
+  padding-top: 30px;
+  padding-left: 10px;
 }
 
 .side-bar h2{
@@ -53,17 +53,15 @@
   color: black;
 }
 
-.my-cate{
+
+.favorite-user{
   padding: 5px 10px;
-  font-size: 11px;
+  font-size: 20px;
   background-color: #f6f6f4;
   margin-top: 10px;
-  text-align: center;
-}
-
-.my-cate a{
-  text-decoration: none;
-  color: black;
+  margin-left: 15%;
+  width: 70%;
+  display: block;
 }
 
 .user-name{
@@ -80,13 +78,24 @@
 
 .main{
   width: 60%;
-  height: 100vh;
+  height: 1150px;
   background-color: rgb(252, 233, 198);
   border-radius: 10px;
-  padding: 10px;
+  padding: 0 20px;
   margin-top: 15px;
   margin-left: 10px;
   margin-right: 10px;
+}
+
+.main-header{
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 3px solid orange;
+}
+
+.page-content{
+  margin: 0 33% 10px 0;
+  height: 30px;
 }
 
 .my-index{
@@ -140,4 +149,17 @@
 a{
   text-decoration: none;
   color: black;
+}
+
+.my-post-bottom{
+  display: flex;
+}
+
+.my-post-favorite{
+  display: flex;
+}
+.post-favorite-icon{
+  height: 18px;
+  width: 18px;
+  margin: 0 5px 3px 5px;
 }

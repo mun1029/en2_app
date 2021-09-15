@@ -2,7 +2,7 @@
   <% posts.each do |post| %>
     <div class="my-index">
       <div class="my-post-header">
-        <div class="my-post-date"> 投稿日時　<%= post.created_at.strftime("%Y/%m/%d %H:%M") %> </div>
+        <div class="my-post-date"> <%= link_to post.user.nickname, user_path(post.user_id) %>が<%= post.created_at.strftime("%Y/%m/%d") %>に更新 </div>
         <% if user_signed_in? && @user.id == current_user.id%>
           <div class="my-post-edit"> <%= link_to "編集", edit_post_path(post.id) %></div>
           <div class="my-post-delete"> <%= link_to "削除", post_path(post.id), method: :delete %></div>
@@ -10,16 +10,43 @@
       </div>
       <div class="my-post-body">
         <div class="my-post-title"> タイトル： <%= link_to "#{post.title}", post_path(post.id), method: :get %> </div>
-        <%# <div class="my-post-favorite"> ☆<%= post.favorites.count </div> %>
       </div>
-      <div class="my-post-category">
-        <div class="cate-head">  カテゴリー：</div>
-        <%= link_to "#{post.category.parent.parent.name}",select_category_index_post_path(post.category.parent.parent.id), class: "my-post-cate" %>
-        <%= link_to "#{post.category.parent.name}",select_category_index_post_path(post.category.parent.id), class: "my-post-cate" %>
-        <%= link_to "#{post.category.name}",select_category_index_post_path(post.category.id), class: "my-post-cate" %>
+      <div class="my-post-bottom">
+        <div class="my-post-category">
+          <div class="cate-head">  カテゴリー：</div>
+          <%= link_to "#{post.category.parent.parent.name}",select_category_index_post_path(post.category.parent.parent.id), class: "my-post-cate" %>
+          <%= link_to "#{post.category.parent.name}",select_category_index_post_path(post.category.parent.id), class: "my-post-cate" %>
+          <%= link_to "#{post.category.name}",select_category_index_post_path(post.category.id), class: "my-post-cate" %>
+        </div>
+        <div class="my-post-favorite">
+          <% if user_signed_in? %>
+            <% if current_user.already_liked?(post) %>
+              <% favorite = Favorite.find_by(post_id: post.id, user_id: current_user.id) %>
+              <%= button_to post_favorite_path(post,favorite), method: :delete, class:"icon-btn" do  %>
+                <%= image_tag 'favorite-true.png', class:"post-favorite-icon" %>
+              <% end %>
+              <div class="post-favorite-count">
+                <p><%= post.favorites.count %></p>
+              </div>
+            <% else %>
+              <%= button_to post_favorites_path(post), class:"icon-btn" do %>
+                <%= image_tag 'favorite.png', class:"post-favorite-icon" %>
+              <% end %>
+              <div class="post-favorite-count">
+                <%= post.favorites.count %>
+              </div>
+            <% end %>
+          <% else %>
+            <%= image_tag 'favorite.png', class:"post-favorite-icon" %>
+            <div class="post-favorite-count">
+              <%= post.favorites.count %>
+            </div>
+          <% end %>
+        </div>
       </div>
     </div>
   <% end %>
+  <%= paginate posts %> 
 <% else %>
   <p>現在、投稿されている記事はありません。</p>
 <% end %>
