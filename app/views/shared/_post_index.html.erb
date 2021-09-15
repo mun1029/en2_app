@@ -10,7 +10,6 @@
       </div>
       <div class="my-post-body">
         <div class="my-post-title"> タイトル： <%= link_to "#{post.title}", post_path(post.id), method: :get %> </div>
-        <%# <div class="my-post-favorite"> ☆<%= post.favorites.count </div> %>
       </div>
       <div class="my-post-bottom">
         <div class="my-post-category">
@@ -20,17 +19,25 @@
           <%= link_to "#{post.category.name}",select_category_index_post_path(post.category.id), class: "my-post-cate" %>
         </div>
         <div class="my-post-favorite">
-          <% if current_user.already_liked?(post) %>
-            <%= button_to post_favorite_path(post), method: :delete, class:"icon-btn" do  %>
-              <%= image_tag 'favorite-true.png', class:"post-favorite-icon" %>
+          <% if user_signed_in? %>
+            <% if current_user.already_liked?(post) %>
+              <% favorite = Favorite.find_by(post_id: post.id, user_id: current_user.id) %>
+              <%= button_to post_favorite_path(post,favorite), method: :delete, class:"icon-btn" do  %>
+                <%= image_tag 'favorite-true.png', class:"post-favorite-icon" %>
+              <% end %>
+              <div class="post-favorite-count">
+                <p><%= post.favorites.count %></p>
+              </div>
+            <% else %>
+              <%= button_to post_favorites_path(post), class:"icon-btn" do %>
+                <%= image_tag 'favorite.png', class:"post-favorite-icon" %>
+              <% end %>
+              <div class="post-favorite-count">
+                <%= post.favorites.count %>
+              </div>
             <% end %>
-            <div class="post-favorite-count">
-              <p><%= post.favorites.count %></p>
-            </div>
           <% else %>
-            <%= button_to post_favorites_path(post), class:"icon-btn" do %>
-              <%= image_tag 'favorite.png', class:"post-favorite-icon" %>
-            <% end %>
+            <%= image_tag 'favorite.png', class:"post-favorite-icon" %>
             <div class="post-favorite-count">
               <%= post.favorites.count %>
             </div>

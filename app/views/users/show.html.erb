@@ -15,14 +15,23 @@
     <div class="cate-search">
       <h2>お気に入りユーザ</h2>
       <div class="my-cates">
-        <% @favorite_users.each do |favorite_user| %>
-          <%= link_to "#{favorite_user.nickname}",user_path(favorite_user.id), class: "favorite-user" %>
+        <% if @favorite_users.present?%>
+          <% @favorite_users.each do |favorite_user| %>
+            <%= link_to "#{favorite_user.nickname}",user_path(favorite_user.id), class: "favorite-user" %>
+          <% end %>
+        <% else %>
+          お気に入りユーザはいません
         <% end %>
       </div>
     </div>
   </div>
   <div class="main">
-    <h2><%= @message %></h2>
+    <div class="main-header">
+      <h2><%= @message %></h2>
+      <div class="page-content">
+        <%= paginate @posts %> 
+      </div>
+    </div>
     <%= render partial: "shared/post_index", locals: { posts: @posts } %>
   </div>
 </div>

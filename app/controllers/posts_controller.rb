@@ -90,6 +90,8 @@ class PostsController < ApplicationController
   def set_user
     if user_signed_in?
       @user = User.find(current_user.id)
+    else
+      @user = User.new
     end
   end
 
