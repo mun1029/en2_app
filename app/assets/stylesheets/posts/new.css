@@ -51,6 +51,7 @@
   width: 49vw;
   height: calc( 70vh - 30px );
   resize: none;
+  min-width: 570px;
   padding: 10px;
   border: 1px solid black;
 }

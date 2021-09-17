@@ -15,6 +15,12 @@
             <%= f.select :grandchildren_id, options_for_select(@category_grandchildren_array.map{|b| [b.name, b.id, {data:{category: b.id}}]}, {prompt: "指定なし", selected: @post.category.id}),{}, {id: 'grandchildren-category', class:'listing-select-wrapper__added'} %>
           </div>
         </div>
+        <div class="text-area-btn">
+          <button type="button" class= "markdown-btn" ><%= image_tag 'markdown1.png', class: "text-btn", id: "font-size" %></button>
+          <button type="button" class= "markdown-btn" ><%= image_tag 'markdown2.png', class: "text-btn", id: "font-Italic" %></button>
+          <button type="button" class= "markdown-btn" ><%= image_tag 'markdown3.png', class: "text-btn", id: "cancellation-line" %></button>
+          <button type="button" class= "markdown-btn" ><%= image_tag 'markdown4.png', class: "text-btn", id: "bulleted-list" %></button>
+        </div>
         <%= f.text_area :text, required: true, value:@post.text, class:"post-text", id:"post-text-area" %>
       </div>
       <div class="post-preview">
