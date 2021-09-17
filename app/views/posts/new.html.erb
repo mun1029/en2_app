@@ -11,7 +11,13 @@
           <div class='listing-product-detail__category'>
           </div>
         </div>
-        <%= f.text_area :text, required: true, class:"post-text", id:"post-text-area" %>
+        <div class="text-area-btn">
+          <button type="button" class= "markdown-btn" ><%= image_tag 'markdown1.png', class: "text-btn", id: "font-size" %></button>
+          <button type="button" class= "markdown-btn" ><%= image_tag 'markdown2.png', class: "text-btn", id: "font-Italic" %></button>
+          <button type="button" class= "markdown-btn" ><%= image_tag 'markdown3.png', class: "text-btn", id: "cancellation-line" %></button>
+          <button type="button" class= "markdown-btn" ><%= image_tag 'markdown4.png', class: "text-btn", id: "bulleted-list" %></button>
+        </div>
+        <%= f.text_area :text, required: true, class: "post-text", id:"post-text-area" %>
       </div>
       <div class="post-preview">
         <div class="post-icon-preview">
