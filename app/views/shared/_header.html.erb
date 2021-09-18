@@ -1,7 +1,5 @@
 <div class="shared-header">
-  <div class="header-left-content">
-    <%= link_to "EN2(logo)", root_path %>
-  </div>
+  <%= link_to image_tag('logo.png', class:"logo_image"), root_path %>
   <div class="header-center-content">
     <div class="header-centerleft-content">
       <%= form_with(url: keyword_search_posts_path, local: true, method: :get, class: "search_word") do |f| %>
@@ -27,13 +25,21 @@
     </div>
   </div>
   <div class="header-right-content">
-    <%= button_to "投稿", {controller: 'posts', action: 'new'}, {method: :get, class: 'new-btn'} %>
     <% if user_signed_in? %>
-      <%= link_to current_user.nickname, user_path(current_user.id) %>
-      <%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "logout" %>
+      <%= button_to "投稿する", {controller: 'posts', action: 'new'}, {method: :get, class: 'new-btn'} %>
+      <div class= "header-user-show">
+        <ul>
+          <li><%= link_to current_user.nickname, user_path(current_user.id) %></li>
+          <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "logout" %></li>
+        </ul>
+      </div>
     <% else %>
-      <%= link_to 'ログイン',  new_user_session_path %>
-      <%= link_to '新規登録', new_user_registration_path %>
+      <div class= "header-user-show">
+        <ul>
+          <li><%= link_to 'ログイン',  new_user_session_path %></li>
+          <li><%= link_to '新規登録', new_user_registration_path %></li>
+        </ul>
+      </div>
     <% end %>
   </div>
 </div>
