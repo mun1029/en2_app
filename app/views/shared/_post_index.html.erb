@@ -13,7 +13,7 @@
       </div>
       <div class="my-post-bottom">
         <div class="my-post-category">
-          <div class="cate-head">  カテゴリー：</div>
+          <div class="cate-head"></div>
           <%= link_to "#{post.category.parent.parent.name}",select_category_index_post_path(post.category.parent.parent.id), class: "my-post-cate" %>
           <%= link_to "#{post.category.parent.name}",select_category_index_post_path(post.category.parent.id), class: "my-post-cate" %>
           <%= link_to "#{post.category.name}",select_category_index_post_path(post.category.id), class: "my-post-cate" %>
@@ -46,7 +46,6 @@
       </div>
     </div>
   <% end %>
-  <%= paginate posts %> 
 <% else %>
   <p>現在、投稿されている記事はありません。</p>
 <% end %>
