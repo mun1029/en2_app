@@ -7,7 +7,8 @@ class PostsController < ApplicationController
   before_action :move_to_index, only: %i[edit update destory]
 
   def index
-    @posts = Post.all.order('created_at DESC').includes(:user).page(params[:page]).per(10)
+    @posts = Post.all.order("created_at DESC").includes(:user).page(params[:page]).per(10)
+    @favorite_posts = Post.includes(:favorite_users).sort {|a,b| b.favorite_users.size <=> a.favorite_users.size}.first(10)
   end
 
   def new

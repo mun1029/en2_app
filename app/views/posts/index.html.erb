@@ -14,9 +14,12 @@
       </div>
     </div>
     <%= render partial: "shared/post_index", locals: { posts: @posts } %>
+    <%= paginate @posts %> 
   </div>
   <div class="post-pick">
-    <h2>最もお気に入りされている記事</h2>
-    <p>記事名（タイトル）お気に入りされている数</p>
+    <div class="post-pick-header">
+      <h2>お気に入りランキング TOP10</h2>
+    </div>
+    <%= render partial: "shared/post_index", locals: { posts: @favorite_posts } %>
   </div>
 </div>
