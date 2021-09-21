@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   devise_for :users
-  root to:'posts#index'
+  root to: 'posts#index'
 
   resources :users, only: :show do
     member do
@@ -8,7 +8,7 @@ Rails.application.routes.draw do
     end
   end
   resources :posts do
-    resources :favorites, only: [:create, :destroy]
+    resources :favorites, only: %i[create destroy]
     member do
       get 'select_category_index'
     end

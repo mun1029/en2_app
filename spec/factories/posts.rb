@@ -1,7 +1,7 @@
 FactoryBot.define do
   factory :post do
-    title {Faker::Lorem.sentence}
-    text  {Faker::Lorem.sentence}
+    title { Faker::Lorem.sentence }
+    text  { Faker::Lorem.sentence }
     association :user
     after(:build) do |post|
       parent_category = create(:category)
